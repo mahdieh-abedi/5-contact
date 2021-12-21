@@ -1,0 +1,10 @@
+.row {
+  padding: 0 10px;
+}
+.divider {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1px grey solid;
+  box-shadow: 1px grey;
+}
