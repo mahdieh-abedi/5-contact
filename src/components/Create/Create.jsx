@@ -1,7 +1,7 @@
 
 const Create= ()=> {
     return (  
-        ""
+        "this is create page"
     );
 }
 

@@ -24,11 +24,11 @@ const FavoriteList= ({ person, setPerson })=> {
                     <Col xs={2}>
                       <Avatar {...stringAvatar("Kent Dodds")} />
                     </Col>
-                    <Col xs={5}>
+                    <Col xs={4}>
                       <h6>{item.firstName}</h6>
                     </Col>
                     <Col>
-                      <ClearIcon sx={{ color: red }} />
+                      <ClearIcon  sx={{ color: red }} />
                     </Col>
                     <Col>
                       <ModeEditIcon color="action" />

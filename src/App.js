@@ -1,20 +1,36 @@
-import './App.css';
+import "./App.css";
 import React, { useState } from "react";
-import {Home, Contacts,Create,Search,Setting} from './components';
-import {BrowserRouter,Routes,Route} from "react-router-dom"
-
+import { Header, Home, Search, Create, Drawer, Contacts } from "./components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [person,setPerson] = useState(Contacts);
+  const [person, setPerson] = useState(Contacts);
+  const [filter, setFilter] = useState("");
+
   return (
-    <BrowserRouter className="App">
-    <Routes >
-      <Route path='/' element={<Home person={person} setPerson={setPerson}/>}/>
-      <Route path='search' element={<Search person={person} setPerson={setPerson}/>}/>
-      <Route path='create' element={<Create person={person} setPerson={setPerson}/>}/>
-      <Route path='setting' element={<Setting person={person} setPerson={setPerson}/>}/>
-    </Routes>
-  </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header setFilter={setFilter} />}>
+          <Route
+            index
+            element={<Home person={person} setPerson={setPerson} />}
+          />
+          <Route
+            path="search"
+            element={
+              <Search
+                person={person}
+                setPerson={setPerson}
+                filter={filter}
+                setFilter={setFilter}
+              />
+            }
+          />
+          <Route path="create" element={<Create />} />
+          <Route path="drawer" element={<Drawer />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

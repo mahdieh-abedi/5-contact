@@ -5,5 +5,19 @@ import Search from "./Search/Search";
 import Setting from "./Setting/Setting";
 import Contacts from "./Contacts";
 import FavoriteList from "./FavoriteList/FavoriteList";
-import SortList from "./SortList/SortList"
-export { Create, Home, Profile, Search, Setting, FavoriteList, SortList, Contacts };
+import SortList from "./SortList/SortList";
+import Header from "./Header/Header";
+import Drawer from "./Drawer/Drawer";
+
+export {
+  Create,
+  Home,
+  Profile,
+  Search,
+  Setting,
+  FavoriteList,
+  SortList,
+  Header,
+  Drawer,
+  Contacts,
+};
