@@ -2,9 +2,9 @@ import React from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import { Outlet,Link } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
-const Header = ({setFilter}) => {
+const Header = ({ setFilter }) => {
   return (
     <>
       <Row position="sticky">
@@ -16,9 +16,10 @@ const Header = ({setFilter}) => {
         <Col xs={7}>
           <Link to="/search">
             <Form>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control type="text" placeholder="Search ..." onChange={e=>setFilter(e.target.value)} />
-              </Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="Search ..."
+                />
             </Form>
           </Link>
         </Col>

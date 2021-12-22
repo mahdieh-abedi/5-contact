@@ -6,6 +6,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   const [person, setPerson] = useState(Contacts);
   const [filter, setFilter] = useState("");
+  const [newPerson, setNewPerson] = useState({
+    firstName: "",
+    familyName: "",
+    number: "",
+    email: "",
+    category: "",
+    favorite: false,
+  });
 
   return (
     <BrowserRouter>
@@ -13,22 +21,41 @@ function App() {
         <Route path="/" element={<Header setFilter={setFilter} />}>
           <Route
             index
-            element={<Home person={person} setPerson={setPerson} />}
-          />
-          <Route
-            path="search"
             element={
-              <Search
+              <Home
                 person={person}
                 setPerson={setPerson}
-                filter={filter}
-                setFilter={setFilter}
+                newPerson={newPerson}
+                setNewPerson={setNewPerson}
               />
             }
           />
-          <Route path="create" element={<Create />} />
+
           <Route path="drawer" element={<Drawer />} />
         </Route>
+        <Route
+          path="search"
+          element={
+            <Search
+              person={person}
+              setPerson={setPerson}
+              setNewPerson={setNewPerson}
+              filter={filter}
+              setFilter={setFilter}
+            />
+          }
+        />
+        <Route
+          path="create"
+          element={
+            <Create
+              person={person}
+              setPerson={setPerson}
+              newPerson={newPerson}
+              setNewPerson={setNewPerson}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

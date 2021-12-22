@@ -3,16 +3,16 @@ import React, { useEffect } from  "react";
 import { Container } from "react-bootstrap";
 import { FavoriteList, SortList} from "..";
 
-const Home = ({person,setPerson}) => {
+const Home = ({person,setPerson,setNewPerson,newPerson}) => {
   useEffect(()=>{
     document.title="my contacts";
   },[person])
   return (
     <Container>
       <div className="divider">Favorite List</div>
-      <FavoriteList person={person} setPerson={setPerson} />
+      <FavoriteList person={person} setPerson={setPerson} setNewPerson={setNewPerson} />
       <div className="divider">All Contacts</div>
-      <SortList person={person} setPerson={setPerson} />
+      <SortList person={person} setPerson={setPerson} setNewPerson={setNewPerson}/>
     </Container>
   );
 };
