@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Container,Row, Col } from "react-bootstrap";
 import { Avatar } from "@mui/material";
 import { red } from "@mui/material/colors";
 import stringAvatar from "@mui/styled-engine-sc";
@@ -8,21 +8,27 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { Link } from "react-router-dom";
 
-const FavoriteList = ({ person, setPerson, setNewPerson }) => {
-  const handleDelet = (id) => {
-    setPerson(person.filter((item) => item.id !== id));
-  };
+const Work = ({ person, setPerson,setNewPerson }) => {
+    const handleDelet = (id) => {
+        setPerson(person.filter((item) => item.id !== id));
+      };
   return (
-    <>
-      {person.filter((item) => item.favorite === true).length === 0 ? (
-        <h6>Please select favorite contacts to reach easy to them</h6>
+    <Container>
+      <div className="divider">Work list</div>
+      {person
+        .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+        .filter((item) => item.category === "Work").length === 0 ? (
+        <h6>there is no work category in your contacts</h6>
       ) : (
         person
-          .filter((item) => item.favorite === true)
+          .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+          .filter((item) => item.category === "Work")
           .map((item) => (
-            <Row className="mt-3" key={item.id}>
+            <Row key={item.id} className="mt-3">
               <Col>
-                <StarIcon color="warning" />
+                <StarIcon
+                  color={item.favorite === true ? "warning" : "disabled"}
+                />
               </Col>
               <Col xs={2}>
                 <Link to={`/profile/${item.id}`}>
@@ -53,8 +59,8 @@ const FavoriteList = ({ person, setPerson, setNewPerson }) => {
             </Row>
           ))
       )}
-    </>
+    </Container>
   );
 };
 
-export default FavoriteList;
+export default Work;

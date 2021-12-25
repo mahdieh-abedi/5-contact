@@ -9,7 +9,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Link } from "react-router-dom";
 
-const Search = ({ person, setPerson,setNewPerson, filter, setFilter }) => {
+const Search = ({ person, setPerson, setNewPerson, filter, setFilter }) => {
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
@@ -56,10 +56,14 @@ const Search = ({ person, setPerson,setNewPerson, filter, setFilter }) => {
                 />
               </Col>
               <Col xs={2}>
-                <Avatar {...stringAvatar("Kent Dodds")} src={item.image} />
+                <Link to={`/profile/${item.id}`}>
+                  <Avatar {...stringAvatar("Kent Dodds")} src={item.image} />
+                </Link>
               </Col>
               <Col xs={4}>
-                <h6>{item.firstName}</h6>
+                <Link to={`/profile/${item.id}`}>
+                  <h6>{item.firstName}</h6>
+                </Link>
               </Col>
               <Col xs={2}>
                 <ClearIcon
@@ -68,15 +72,15 @@ const Search = ({ person, setPerson,setNewPerson, filter, setFilter }) => {
                 />
               </Col>
               <Col>
-              <Link to="/create">
-                <ModeEditIcon
-                  color="action"
-                  onClick={() => {
-                    setNewPerson(item);
-                  }}
-                />
-              </Link>
-            </Col>
+                <Link to="/createandupdate">
+                  <ModeEditIcon
+                    color="action"
+                    onClick={() => {
+                      setNewPerson(item);
+                    }}
+                  />
+                </Link>
+              </Col>
             </Row>
           ))
       )}

@@ -8,7 +8,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { Link } from "react-router-dom";
 
-const SortList = ({ person, setPerson, setNewPerson, newPerson }) => {
+const SortList = ({ person, setPerson, setNewPerson }) => {
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
@@ -24,10 +24,14 @@ const SortList = ({ person, setPerson, setNewPerson, newPerson }) => {
               />
             </Col>
             <Col xs={2}>
-              <Avatar {...stringAvatar("Kent Dodds")} src={item.image} />
+              <Link to={`/profile/${item.id}`}>
+                <Avatar {...stringAvatar("Kent Dodds")} src={item.image} />
+              </Link>
             </Col>
             <Col xs={4}>
-              <h6>{item.firstName}</h6>
+              <Link to={`/profile/${item.id}`}>
+                <h6>{item.firstName}</h6>
+              </Link>
             </Col>
             <Col>
               <ClearIcon
@@ -36,7 +40,7 @@ const SortList = ({ person, setPerson, setNewPerson, newPerson }) => {
               />
             </Col>
             <Col>
-              <Link to="/create">
+              <Link to="/createandupdate">
                 <ModeEditIcon
                   color="action"
                   onClick={() => {

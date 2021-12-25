@@ -1,16 +1,17 @@
 import "./Create.css";
-import { Form, Container, Row, Col, FormSelect, option } from "react-bootstrap";
+
+import { Container, Row, Col, Button } from "react-bootstrap";
+
+import { Link } from "react-router-dom";
+
 import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import StarOutlineOutlinedIcon from "@mui/icons-material/StarOutlineOutlined";
+import StarIcon from "@mui/icons-material/Star";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import ClearIcon from "@mui/icons-material/Clear";
-import { red } from "@mui/material/colors";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { Link } from "react-router-dom";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
 const Create = ({ person, setPerson, newPerson, setNewPerson }) => {
   const handleAdd = (e) => {
@@ -25,18 +26,20 @@ const Create = ({ person, setPerson, newPerson, setNewPerson }) => {
       setPerson([
         ...person,
         {
-          id: Math.floor(Math.randomm() * 10000),
+          id: Math.floor(Math.random() * 10000),
           ...newPerson,
         },
       ]);
     }
-    setPerson({
+    setNewPerson({
       firstName: "",
       familyName: "",
       number: "",
       email: "",
       category: "",
       favorite: false,
+      image:
+        "https://i.pinimg.com/564x/4c/f3/79/4cf379eb39ef955bb3e2df4be81f4503.jpg",
     });
   };
   const handleChange = (e) => {
@@ -60,102 +63,105 @@ const Create = ({ person, setPerson, newPerson, setNewPerson }) => {
             />
           </Col>
         </Row>
-        <Row className="m-3">
-          <Col xs={2}>
-            <PermContactCalendarOutlinedIcon fontSize="large" />
-          </Col>
-          <Col>
-            <Form onSubmit={handleAdd}>
-              <Form.Control
-                type="text"
-                placeholder="First Name ..."
-                name={"firstName"}
-                value={newPerson.firstName}
-                onChange={handleChange}
-              />
-            </Form>
-          </Col>
-        </Row>
-        <Row className="m-3">
-          <Col xs={2}>
-            <PermContactCalendarOutlinedIcon fontSize="large" />
-          </Col>
-          <Col>
-            <Form onSubmit={handleAdd}>
-              <Form.Control
-                type="text"
-                placeholder="Family Name ..."
-                name={"familyName"}
-                value={newPerson.familyName}
-                onChange={handleChange}
-              />
-            </Form>
-          </Col>
-        </Row>
-        <Row className="m-3">
-          <Col xs={2}>
-            <CallOutlinedIcon fontSize="large" />
-          </Col>
-          <Col>
-            <Form onSubmit={handleAdd}>
-              <Form.Control
-                type="text"
-                placeholder="Phone Number ..."
-                name={"number"}
-                value={newPerson.number}
-                onChange={handleChange}
-              />
-            </Form>
-          </Col>
-        </Row>
-        <Row className="m-3">
-          <Col xs={2}>
-            <MarkunreadOutlinedIcon fontSize="large" />
-          </Col>
-          <Col>
-            <Form onSubmit={handleAdd}>
-              <Form.Control
-                type="text"
-                placeholder="Email ..."
-                name={"email"}
-                value={newPerson.email}
-                onChange={handleChange}
-              />
-            </Form>
-          </Col>
-        </Row>
-        <Row className="m-3">
-          <Col xs={2}>
-            <CategoryOutlinedIcon fontSize="large" />
-          </Col>
-          <Col>
-            <Form onSubmit={handleAdd}>
-              <Form.Select
-                aria-label="Select a Category"
-                name={"category"}
-                value={newPerson.category}
-                onChange={handleChange}
-              >
-                <option value="1">family</option>
-                <option value="2">Friend</option>
-                <option value="3">Work</option>
-              </Form.Select>
-            </Form>
-          </Col>
-        </Row>
-        <Row className="m-3">
-          <Col xs={3}>
-            <StarOutlineOutlinedIcon fontSize="large" color="warning" />
-          </Col>
-          <Col xs={3}>
-            <ModeEditIcon fontSize="large" />
-          </Col>
-          <Col xs={3}>
-            <AddOutlinedIcon fontSize="large" color="success" type="submit" />
-          </Col>
-          <Col xs={3}>
-            <ClearIcon fontSize="large" sx={{ color: red[500] }} />
-          </Col>
+        <Row className="mt-3">
+          <form onSubmit={handleAdd}>
+            <label htmlFor="firstName" className="m-2">
+              {" "}
+              <PermContactCalendarOutlinedIcon fontSize="large" />
+            </label>
+            <input
+              className="m-2"
+              required
+              type="text"
+              placeholder="First Name"
+              name={"firstName"}
+              value={newPerson.firstName}
+              id="firstName"
+              onChange={handleChange}
+            ></input>
+            <br />{" "}
+            <label htmlFor="familyname" className="m-2">
+              <PermContactCalendarOutlinedIcon fontSize="large" />
+            </label>
+            <input
+              className="m-2"
+              required
+              type="text"
+              placeholder="Family Name"
+              id="familyname"
+              onChange={handleChange}
+              name={"familyName"}
+              value={newPerson.familyName}
+            ></input>
+            <br />
+            <label htmlFor="number" className="m-2">
+              {" "}
+              <CallOutlinedIcon fontSize="large" />
+            </label>
+            <input
+              className="m-2"
+              required
+              type="text"
+              placeholder="Phone Number"
+              id="number"
+              onChange={handleChange}
+              name={"number"}
+              value={newPerson.number}
+            ></input>
+            <br />
+            <label htmlFor="email" className="m-2">
+              <MarkunreadOutlinedIcon fontSize="large" />
+            </label>
+            <input
+              className="m-2"
+              required
+              type="text"
+              placeholder="Email Address"
+              id="email"
+              onChange={handleChange}
+              name={"email"}
+              value={newPerson.email}
+            ></input>
+            <br />
+            <label htmlFor="category" className="m-2">
+              <CategoryOutlinedIcon fontSize="large" />
+            </label>
+            <input
+              className="m-2"
+              required
+              type="text"
+              placeholder="Category"
+              id="category"
+              onChange={handleChange}
+              name={"category"}
+              value={newPerson.category}
+            ></input>
+            <br />
+            <Row>
+              <Col>
+                <Button type="submit" className="SubmitBtn">
+                  {newPerson.id ? (
+                    <ModeEditIcon
+                      color="action"
+                      className="m-2"
+                      fontSize="large"
+                    />
+                  ) : (
+                    <AddBoxIcon color="success" fontSize="large" />
+                  )}
+                </Button>
+              </Col>
+              <Col xs={3}>
+                <Button>
+                  <StarIcon
+                    fontSize="large"
+                    color={newPerson.favorite === true ? "warning" : "disabled"}
+                    className="x-2"
+                  />
+                </Button>
+              </Col>
+            </Row>
+          </form>
         </Row>
       </Container>
     </>

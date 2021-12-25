@@ -3,10 +3,7 @@ import React, { useEffect } from  "react";
 import { Container } from "react-bootstrap";
 import { FavoriteList, SortList} from "..";
 
-const Home = ({person,setPerson,setNewPerson,newPerson}) => {
-  useEffect(()=>{
-    document.title="my contacts";
-  },[person])
+const Home = ({person,setPerson,setNewPerson}) => {
   return (
     <Container>
       <div className="divider">Favorite List</div>

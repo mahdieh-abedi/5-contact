@@ -44,7 +44,7 @@ const Contacts = [
     firstName: "RoohAngiz",
     familyName: "FathAli",
     number: "09390283169",
-    email: "babak.emkani@gmail.com",
+    email: "roohangiz.fathali@gmail.com",
     category: "Family",
     favorite:false,
     image:"https://i.pinimg.com/564x/6e/01/e3/6e01e3f6462a5b1fe0c8367b9234bee5.jpg"
@@ -54,8 +54,8 @@ const Contacts = [
     firstName: "Babak",
     familyName: "Emkani",
     number: '09101442049',
-    email: "roohangiz.fathali@gmail.com",
-    category: "friend",
+    email: "babak.emkani@gmail.com",
+    category: "Friend",
     favorite:true,
     image:"https://i.pinimg.com/564x/d3/3a/2d/d33a2d1b538f71b19af66d2276aa10e1.jpg"
   },

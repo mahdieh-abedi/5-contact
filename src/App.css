@@ -3,3 +3,26 @@
   height: 100vh;
   align-items: baseline;
 }
+.btn-primary{
+  border: none;
+  background-color: inherit;
+}
+a{
+  text-decoration: none;
+  color:black
+}
+
+.row {
+  padding: 0 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.container{
+  border: 1px solid rgb(141, 139, 139);
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 20px;
+}
+h6{
+  padding: 10px;
+}

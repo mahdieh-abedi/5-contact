@@ -9,7 +9,7 @@ const Header = ({ setFilter }) => {
     <>
       <Row position="sticky">
         <Col>
-          <Link to="/drawer">
+          <Link to="/setting">
             <MenuIcon color="action" fontSize="large" className="mx-2" />
           </Link>
         </Col>
@@ -24,7 +24,7 @@ const Header = ({ setFilter }) => {
           </Link>
         </Col>
         <Col>
-          <Link to="/create">
+          <Link to="/createandupdate">
             <AddBoxIcon color="success" fontSize="large" />
           </Link>
         </Col>
