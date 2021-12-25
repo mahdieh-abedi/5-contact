@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container,Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
@@ -10,13 +10,19 @@ import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const Friend = ({ person, setPerson,setNewPerson }) => {
-    const handleDelet = (id) => {
-        setPerson(person.filter((item) => item.id !== id));
-      };
+const Friend = ({ person, setPerson, setNewPerson }) => {
+  const handleDelet = (id) => {
+    setPerson(person.filter((item) => item.id !== id));
+  };
   return (
     <Container>
+      <Row>
+        <Link to="/setting">
+          <ArrowBackIosNewIcon sx={{ fontSize: 30 }} color="action" />
+        </Link>
+      </Row>
       <div className="divider">Friend list</div>
       {person
         .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))

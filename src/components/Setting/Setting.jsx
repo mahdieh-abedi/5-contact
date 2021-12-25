@@ -18,13 +18,13 @@ const Setting = ({ person }) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={4} className="mt-3">
+        <Col xs={6} className="mt-3">
           <h5>Setting</h5>
         </Col>
       </Row>
       <Row>
-        <Col  xs={4}>
-        {person.length} {" "} Contacts
+        <Col  xs={6}>
+        <h6>{person.length} {" "} Contacts</h6>
         </Col>
       </Row>
       <Row>

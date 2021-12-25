@@ -10,7 +10,7 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 const Header = () => {
   return (
     <>
-      <Row position="sticky">
+      <Row position="sticky" className="secondColor">
         <Col>
           <Link to="/setting">
             <MenuIcon color="action" fontSize="large" className="mx-2" />
