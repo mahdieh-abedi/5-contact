@@ -2,11 +2,10 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
-import GroupIcon from "@mui/icons-material/Group";
 import WorkIcon from "@mui/icons-material/Work";
+import GroupIcon from "@mui/icons-material/Group";
+import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { height } from "@mui/system";
 
 const Setting = ({ person }) => {
   return (

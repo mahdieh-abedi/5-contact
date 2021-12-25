@@ -1,5 +1,9 @@
 import "./App.css";
+
 import React, { useState, useEffect } from "react";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import {
   Header,
   Home,
@@ -12,7 +16,7 @@ import {
   Friend,
   PersonProfile,
 } from "./components";
-import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+
 
 function App() {
   const [person, setPerson] = useState(Contacts, [], () => {
@@ -39,7 +43,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Header setFilter={setFilter} />}>
+        <Route path="/" element={<Header/>}>
           <Route
             index
             element={
@@ -53,7 +57,7 @@ function App() {
         </Route>
         <Route
           path="profile/:ID"
-          element={<PersonProfile person={person} setPerson={setPerson} />}
+          element={<PersonProfile person={person}/>}
         />
         <Route
           path="search"

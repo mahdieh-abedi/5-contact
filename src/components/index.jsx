@@ -7,7 +7,6 @@ import Contacts from "./Contacts";
 import FavoriteList from "./FavoriteList/FavoriteList";
 import SortList from "./SortList/SortList";
 import Header from "./Header/Header";
-import Drawer from "./Drawer/Drawer";
 import PersonProfile from "./PersonProfile/PersonProfile"
 import Family from "./Family/Family"
 import Friend from "./Friend/Friend"
@@ -22,7 +21,6 @@ export {
   FavoriteList,
   SortList,
   Header,
-  Drawer,
   PersonProfile,
   Family,
   Friend,

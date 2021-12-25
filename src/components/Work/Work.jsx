@@ -1,12 +1,15 @@
 import React from "react";
+
 import { Container,Row, Col } from "react-bootstrap";
+
+import { Link } from "react-router-dom";
+
 import { Avatar } from "@mui/material";
 import { red } from "@mui/material/colors";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { Link } from "react-router-dom";
 
 const Work = ({ person, setPerson,setNewPerson }) => {
     const handleDelet = (id) => {

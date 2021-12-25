@@ -1,10 +1,13 @@
 import React from "react";
+
 import { Form, Row, Col } from "react-bootstrap";
+
+import { Outlet, Link } from "react-router-dom"; 
+
 import MenuIcon from "@mui/icons-material/Menu";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import { Outlet, Link } from "react-router-dom";
 
-const Header = ({ setFilter }) => {
+const Header = () => {
   return (
     <>
       <Row position="sticky">

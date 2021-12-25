@@ -1,5 +1,9 @@
 import React from "react";
+
 import { Container, Row, Col, Form } from "react-bootstrap";
+
+import { Link } from "react-router-dom";
+
 import { Avatar } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
@@ -7,7 +11,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { red } from "@mui/material/colors";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { Link } from "react-router-dom";
+
 
 const Search = ({ person, setPerson, setNewPerson, filter, setFilter }) => {
   const handleDelet = (id) => {

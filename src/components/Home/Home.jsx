@@ -1,6 +1,7 @@
 import "./Home.css";
-import React, { useEffect } from  "react";
+
 import { Container } from "react-bootstrap";
+
 import { FavoriteList, SortList} from "..";
 
 const Home = ({person,setPerson,setNewPerson}) => {
