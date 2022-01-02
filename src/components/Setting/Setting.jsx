@@ -1,13 +1,19 @@
+import React,{useContext} from "react";
+
 import { Container, Row, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
+
+import {PersonContext} from ".."
 
 import WorkIcon from "@mui/icons-material/Work";
 import GroupIcon from "@mui/icons-material/Group";
 import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const Setting = ({ person }) => {
+const Setting = () => {
+  const{person}=useContext(PersonContext)
+
   return (
     <Container style={{width:300, height:600}}>
       <Row>

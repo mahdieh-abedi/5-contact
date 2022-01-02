@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
+
+import {PersonContext,NewPersonContext} from ".."
 
 import { Avatar } from "@mui/material";
 import { red } from "@mui/material/colors";
@@ -12,7 +14,10 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const Work = ({ person, setPerson, setNewPerson }) => {
+const Work = ({sortDataByFirstName }) => {
+  const{person,setPerson}=useContext(PersonContext)
+  const{setNewPerson}=useContext(NewPersonContext)
+
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
@@ -24,13 +29,11 @@ const Work = ({ person, setPerson, setNewPerson }) => {
         </Link>
       </Row>
       <div className="divider">Work list</div>
-      {person
-        .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+      {sortDataByFirstName
         .filter((item) => item.category === "Work").length === 0 ? (
         <h6>there is no work category in your contacts</h6>
       ) : (
-        person
-          .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+        sortDataByFirstName
           .filter((item) => item.category === "Work")
           .map((item) => (
             <Row key={item.id} className="mt-3">

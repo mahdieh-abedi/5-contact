@@ -4,13 +4,13 @@ import { Container } from "react-bootstrap";
 
 import { FavoriteList, SortList} from "..";
 
-const Home = ({person,setPerson,setNewPerson}) => {
+const Home = ({person,setPerson,setNewPerson,sortDataByFirstName}) => {
   return (
     <Container>
       <div className="divider">Favorite List</div>
-      <FavoriteList person={person} setPerson={setPerson} setNewPerson={setNewPerson} />
+      <FavoriteList sortDataByFirstName={sortDataByFirstName}/>
       <div className="divider">All Contacts</div>
-      <SortList person={person} setPerson={setPerson} setNewPerson={setNewPerson}/>
+      <SortList sortDataByFirstName={sortDataByFirstName}/>
     </Container>
   );
 };

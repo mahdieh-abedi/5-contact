@@ -4,14 +4,55 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-import {InputAtribute} from ".."
+import {PersonContext,NewPersonContext} from ".."
 
 import StarIcon from "@mui/icons-material/Star";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
+import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
+import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import { useContext } from "react";
 
-const Create = ({ person, setPerson, newPerson, setNewPerson }) => {
+const Create = () => {
+  const{person,setPerson}=useContext(PersonContext)
+  const{newPerson,setNewPerson}=useContext(NewPersonContext)
+  
+  const InputAtribute = [
+    {
+      key: 1,
+      name: "firstName",
+      icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
+      value: newPerson.firstName,
+    },
+    {
+      key: 2,
+      name: "familyName",
+      icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
+      value: newPerson.familyName,
+    },
+    {
+      key: 3,
+      name: "number",
+      icon: <CallOutlinedIcon fontSize="large" />,
+      value: newPerson.number,
+    },
+    {
+      key: 4,
+      name: "email",
+      icon: <MarkunreadOutlinedIcon fontSize="large" />,
+      value: newPerson.email,
+    },
+    {
+      key: 5,
+      name: "category",
+      icon: <CategoryOutlinedIcon fontSize="large" />,
+      value: newPerson.category,
+    },
+  ];
+
   const handleAdd = (e) => {
     e.preventDefault();
     if (newPerson.id) {
@@ -64,15 +105,16 @@ const Create = ({ person, setPerson, newPerson, setNewPerson }) => {
         <form onSubmit={handleAdd}>
           {InputAtribute.map((item) => (
             <div key={item.key}>
-              <label htmlFor={item.value} className="m-2">
+              <label htmlFor={item.name} className="m-2">
                 {item.icon}
               </label>
               <input
                 className="m-2"
                 required
                 type="text"
-                placeholder={item.value}
-                name={item.value}
+                placeholder={item.name}
+                name={item.name}
+                value={item.value}
                 id={item.value}
                 onChange={handleChange}
               ></input>
@@ -83,13 +125,17 @@ const Create = ({ person, setPerson, newPerson, setNewPerson }) => {
             <Col>
               <Button type="submit" className="SubmitBtn">
                 {newPerson.id ? (
-                  <ModeEditIcon
-                    color="action"
-                    className="m-2"
-                    fontSize="large"
-                  />
+                  <>
+                    <ModeEditIcon
+                      color="action"
+                      className="m-2"
+                      fontSize="large"
+                    />
+                  </>
                 ) : (
-                  <AddBoxIcon color="success" fontSize="large" />
+                  <>
+                    <AddBoxIcon color="success" fontSize="large" />
+                  </>
                 )}
               </Button>
             </Col>

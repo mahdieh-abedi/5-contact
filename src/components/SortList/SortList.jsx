@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Row, Col } from "react-bootstrap";
+
+import { PersonContext, NewPersonContext} from "..";
 
 import { Link } from "react-router-dom";
 
@@ -11,14 +13,15 @@ import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
-const SortList = ({ person, setPerson, setNewPerson }) => {
+const SortList = ({sortDataByFirstName }) => {
+  const{person,setPerson}=useContext(PersonContext)
+  const{setNewPerson}=useContext(NewPersonContext)
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
   return (
     <>
-      {person
-        .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+      {sortDataByFirstName
         .map((item) => (
           <Row key={item.id} className="mt-3">
             <Col>

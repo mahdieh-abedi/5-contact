@@ -1,6 +1,10 @@
+import React,{useContext} from "react";
+
 import { Container, Row, Col } from "react-bootstrap";
 
 import { Link, useParams } from "react-router-dom";
+
+import {PersonContext} from ".."
 
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import CallIcon from "@mui/icons-material/Call";
@@ -9,7 +13,8 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import StarIcon from '@mui/icons-material/Star';
 
-const PersonProfile = ({ person }) => {
+const PersonProfile = () => {
+  const{person}=useContext(PersonContext)
 
   const { ID } = useParams();
   return (
@@ -65,11 +70,6 @@ const PersonProfile = ({ person }) => {
                 <Col>
                   <LinkedInIcon color="primary"  fontSize="large" />
                 </Col>
-              </Row>
-              <Row>
-                <Col></Col>
-                <Col></Col>
-                <Col></Col>
               </Row>
             </>
           ))}

@@ -1,6 +1,8 @@
-import React from "react";
+import React,{useContext} from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
+
+import {PersonContext,NewPersonContext} from ".."
 
 import { Link } from "react-router-dom";
 
@@ -12,7 +14,10 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const Family = ({ person, setPerson, setNewPerson }) => {
+const Family = ({sortDataByFirstName}) => {
+  const{person,setPerson}=useContext(PersonContext)
+  const{setNewPerson}=useContext(NewPersonContext)
+
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
@@ -24,13 +29,11 @@ const Family = ({ person, setPerson, setNewPerson }) => {
         </Link>
       </Row>
       <div className="divider">Family list</div>
-      {person
-        .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+      {sortDataByFirstName
         .filter((item) => item.category === "Family").length === 0 ? (
         <h6>there is no family category in your contacts</h6>
       ) : (
-        person
-          .sort((a, b) => (a.firstName > b.firstName ? 1 : -1))
+        sortDataByFirstName
           .filter((item) => item.category === "Family")
           .map((item) => (
             <Row key={item.id} className="mt-3">

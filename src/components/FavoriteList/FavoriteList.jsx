@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Row, Col } from "react-bootstrap";
+
+import { PersonContext, NewPersonContext} from "..";
 
 import { Link } from "react-router-dom";
 
@@ -12,7 +14,10 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 
-const FavoriteList = ({ person, setPerson, setNewPerson }) => {
+const FavoriteList = () => {
+  const{person,setPerson}=useContext(PersonContext)
+  const{setNewPerson}=useContext(NewPersonContext)
+
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };

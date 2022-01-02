@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -10,111 +10,48 @@ import {
   Search,
   Create,
   Family,
-  Data,
   Setting,
   Work,
   Friend,
   PersonProfile,
+  PersonContext,
+  FilterProvider,
 } from "./components";
 
-
 function App() {
-  const [person, setPerson] = useState(JSON.parse(localStorage.getItem("contacts"))|| Data);
-
-  const [filter, setFilter] = useState("");
-
-  const [newPerson, setNewPerson] = useState({
-    firstName: "",
-    familyName: "",
-    number: "",
-    email: "",
-    category: "",
-    favorite: false,
-  });
-
-  useEffect(() => {
-    document.title = "my contacts";
-    localStorage.setItem("contacts", JSON.stringify(Data));
-  }, [person]);
-
+  const { person } = useContext(PersonContext);
+  const sortDataByFirstName = person.sort((a, b) =>
+    a.firstName > b.firstName ? 1 : -1
+  );
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Header/>}>
+    <FilterProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route
+              index
+              element={<Home sortDataByFirstName={sortDataByFirstName} />}
+            />
+          </Route>
+          <Route path="profile/:ID" element={<PersonProfile />} />
+          <Route path="search" element={<Search />} />
+          <Route path="setting" element={<Setting />} />
+          <Route path="createandupdate" element={<Create />} />
           <Route
-            index
-            element={
-              <Home
-                person={person}
-                setPerson={setPerson}
-                setNewPerson={setNewPerson}
-              />
-            }
+            path="family"
+            element={<Family sortDataByFirstName={sortDataByFirstName} />}
           />
-        </Route>
-        <Route
-          path="profile/:ID"
-          element={<PersonProfile person={person}/>}
-        />
-        <Route
-          path="search"
-          element={
-            <Search
-              person={person}
-              setPerson={setPerson}
-              setNewPerson={setNewPerson}
-              filter={filter}
-              setFilter={setFilter}
-            />
-          }
-        />
-        <Route
-          path="setting"
-          element={<Setting person={person} />}
-        />
-        <Route
-          path="createandupdate"
-          element={
-            <Create
-              person={person}
-              setPerson={setPerson}
-              newPerson={newPerson}
-              setNewPerson={setNewPerson}
-            />
-          }
-        />
-        <Route
-          path="family"
-          element={
-            <Family
-              person={person}
-              setPerson={setPerson}
-              setNewPerson={setNewPerson}
-            />
-          }
-        />
-        <Route
-          path="friend"
-          element={
-            <Friend
-              person={person}
-              setPerson={setPerson}
-              setNewPerson={setNewPerson}
-            />
-          }
-        />
-        <Route
-          path="work"
-          element={
-            <Work
-              person={person}
-              setPerson={setPerson}
-              setNewPerson={setNewPerson}
-            />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="friend"
+            element={<Friend sortDataByFirstName={sortDataByFirstName} />}
+          />
+          <Route
+            path="work"
+            element={<Work sortDataByFirstName={sortDataByFirstName} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </FilterProvider>
   );
 }
 

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { PersonContext, NewPersonContext, Filter } from "..";
 
 import { Container, Row, Col, Form } from "react-bootstrap";
 
@@ -12,8 +14,10 @@ import { red } from "@mui/material/colors";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-
-const Search = ({ person, setPerson, setNewPerson, filter, setFilter }) => {
+const Search = () => {
+  const { person, setPerson } = useContext(PersonContext);
+  const { setNewPerson } = useContext(NewPersonContext);
+  const { filter, setFilter } = useContext(Filter);
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
