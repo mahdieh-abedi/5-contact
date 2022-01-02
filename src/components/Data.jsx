@@ -3,6 +3,30 @@ import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 
+export const InputAtribute = [
+  {
+    key: 1,
+    value: "firstName",
+    icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
+  },
+  {
+    key: 2,
+    value: "familyName",
+    icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
+  },
+  { key: 3, value: "number", icon: <CallOutlinedIcon fontSize="large" /> },
+  {
+    key: 4,
+    value: "email",
+    icon: <MarkunreadOutlinedIcon fontSize="large" />,
+  },
+  {
+    key: 5,
+    value: "category",
+    icon: <CategoryOutlinedIcon fontSize="large" />,
+  },
+];
+
 const Data = [
   {
     id: 1,
@@ -65,29 +89,8 @@ const Data = [
     image:"https://i.pinimg.com/564x/d3/3a/2d/d33a2d1b538f71b19af66d2276aa10e1.jpg"
   },
 ];
-export const InputAtribute = [
-  {
-    key: 1,
-    value: "firstName",
-    icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
-  },
-  {
-    key: 2,
-    value: "familyName",
-    icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
-  },
-  { key: 3, value: "number", icon: <CallOutlinedIcon fontSize="large" /> },
-  {
-    key: 4,
-    value: "email",
-    icon: <MarkunreadOutlinedIcon fontSize="large" />,
-  },
-  {
-    key: 5,
-    value: "category",
-    icon: <CategoryOutlinedIcon fontSize="large" />,
-  },
-];
+
+export sortDataBy
 
 export default Data;
 
