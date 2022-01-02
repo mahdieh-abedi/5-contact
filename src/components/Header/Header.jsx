@@ -18,12 +18,10 @@ const Header = () => {
         </Col>
         <Col xs={7}>
           <Link to="/search">
-            <Form>
                 <Form.Control
                   type="text"
                   placeholder="Search ..."
                 />
-            </Form>
           </Link>
         </Col>
         <Col>

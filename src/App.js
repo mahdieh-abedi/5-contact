@@ -10,7 +10,7 @@ import {
   Search,
   Create,
   Family,
-  Contacts,
+  Data,
   Setting,
   Work,
   Friend,
@@ -19,10 +19,7 @@ import {
 
 
 function App() {
-  const [person, setPerson] = useState(Contacts, [], () => {
-    const LocalData = localStorage.getItem("contacts");
-    return LocalData ? JSON.parse(LocalData) : Contacts;
-  });
+  const [person, setPerson] = useState(JSON.parse(localStorage.getItem("contacts"))|| Data);
 
   const [filter, setFilter] = useState("");
 
@@ -37,7 +34,7 @@ function App() {
 
   useEffect(() => {
     document.title = "my contacts";
-    localStorage.setItem("contacts", JSON.stringify(person));
+    localStorage.setItem("contacts", JSON.stringify(Data));
   }, [person]);
 
   return (

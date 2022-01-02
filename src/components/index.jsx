@@ -3,7 +3,7 @@ import Home from "./Home/Home";
 import Profile from "./PersonProfile/PersonProfile";
 import Search from "./Search/Search";
 import Setting from "./Setting/Setting";
-import Contacts from "./Contacts";
+import Data ,{InputAtribute}from "./Data";
 import FavoriteList from "./FavoriteList/FavoriteList";
 import SortList from "./SortList/SortList";
 import Header from "./Header/Header";
@@ -25,5 +25,6 @@ export {
   Family,
   Friend,
   Work,
-  Contacts,
+  Data,
+  InputAtribute,
 };
