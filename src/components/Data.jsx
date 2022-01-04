@@ -6,7 +6,7 @@ const Data = [
     number: "09378798898",
     email: "mahdieh.abed@gmail.com",
     category: "Family",
-    favorite:false,
+    favorite:true,
     image:"https://i.pinimg.com/564x/55/10/99/5510991833381ccddba886095a9f8e0f.jpg"
   },
   {
@@ -56,7 +56,7 @@ const Data = [
     number: '09101442049',
     email: "babak.emkani@gmail.com",
     category: "Friend",
-    favorite:false,
+    favorite:true,
     image:"https://i.pinimg.com/564x/d3/3a/2d/d33a2d1b538f71b19af66d2276aa10e1.jpg"
   },
 ];

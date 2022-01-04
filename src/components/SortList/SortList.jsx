@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { Row, Col } from "react-bootstrap";
 
-import { PersonContext} from "..";
+import { PersonContext,NewPersonContext } from "..";
 
 import { Link } from "react-router-dom";
 
@@ -14,18 +14,17 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 const SortList = ({ sortDataByFirstName }) => {
-  const {dispatch} = useContext(PersonContext);
+  const { dispatch } = useContext(PersonContext);
+  const {setNewPerson } = useContext(NewPersonContext);
+
 
   const handleDelete = (ID) => {
-    dispatch({type: "Delete",payload:{ID}})
+    dispatch({ type: "Delete", payload: { ID } });
   };
   const handleFavorite = (ID, e) => {
     e.preventDefault();
-    dispatch({type: "Favorite",payload:{ID,checked:e.target.checked}})
+    dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
-  const handleEdit=(ID)=>{
-
-  }
   return (
     <>
       {sortDataByFirstName.map((item) => (
@@ -55,11 +54,11 @@ const SortList = ({ sortDataByFirstName }) => {
             />
           </Col>
           <Col>
-            <Link to="/Edit">
+            <Link to={`/edit/${item.id}`} >
               <ModeEditIcon
-               style={{ color: "#E6E6E6" }}
+                style={{ color: "#E6E6E6" }}
                 onClick={() => {
-                  dispatch(item);
+                  setNewPerson(item);
                 }}
               />
             </Link>

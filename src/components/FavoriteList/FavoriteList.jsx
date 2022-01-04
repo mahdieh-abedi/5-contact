@@ -13,8 +13,8 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
-const FavoriteList = () => {
-  const { person ,dispatch } = useContext(PersonContext);
+const FavoriteList = ({sortDataByFirstName}) => {
+  const { dispatch } = useContext(PersonContext);
   const { setNewPerson } = useContext(NewPersonContext);
 
   const handleDelete = (ID) => {
@@ -26,10 +26,10 @@ const FavoriteList = () => {
   };
   return (
     <>
-      {person.filter((item) => item.favorite === true).length === 0 ? (
+      {sortDataByFirstName.filter((item) => item.favorite === true).length === 0 ? (
         <h6>Please select favorite contacts to reach easy to them</h6>
       ) : (
-        person
+        sortDataByFirstName
           .filter((item) => item.favorite === true)
           .map((item) => (
             <Row className="mt-3" key={item.id}>
@@ -58,7 +58,7 @@ const FavoriteList = () => {
                 />
               </Col>
               <Col>
-                <Link to="/edit">
+              <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
                     style={{ color: "#E6E6E6" }}
                     onClick={() => {

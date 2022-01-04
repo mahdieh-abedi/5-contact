@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { PersonContext, NewPersonContext } from "..";
 
 import StarIcon from "@mui/icons-material/Star";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 

@@ -7,7 +7,7 @@ export const PersonContext = createContext({person:[],dispatch:()=>{}});
 const PersonContextProvider = ({ children }) => {
     const [person, dispatch] = useReducer(
       Reducer,
-      JSON.parse(localStorage.getItem("contacts")) || Data
+      JSON.parse(localStorage.getItem("contacts")) ||  Data
       );
     
   useEffect(() => {

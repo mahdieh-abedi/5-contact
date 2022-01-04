@@ -74,7 +74,7 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="setting" element={<Setting />} />
           <Route path="create" element={<Create InputAtribute={InputAtribute}/>} />
-          <Route path="edit" element={<Edit InputAtribute={InputAtribute}/>} />
+          <Route path="edit/:ID" element={<Edit InputAtribute={InputAtribute}/>} />
           <Route
             path="family"
             element={<Family sortDataByFirstName={sortDataByFirstName} />}

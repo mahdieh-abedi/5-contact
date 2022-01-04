@@ -1,37 +1,44 @@
 import "./Edit.css";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
-
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { PersonContext, NewPersonContext } from "..";
 
 import StarIcon from "@mui/icons-material/Star";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import AddBoxIcon from "@mui/icons-material/AddBox";
 
 import { useContext } from "react";
 
-const Create = ({ InputAtribute }) => {
-  const {dispatch } = useContext(PersonContext);
+const Edit = ({ InputAtribute }) => {
+  const { person, dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
+  const { ID } = useParams();
 
-  const handleAdd = (e) => {
+  const handleEdit = (ID, e) => {
     e.preventDefault();
-    const firstName=newPerson.firstName
-    const familyName=newPerson.familyName
-    const number=newPerson.number
-    const email=newPerson.email
-    const category=newPerson.category
-    const favorite=false
-    const image="https://i.pinimg.com/564x/4c/f3/79/4cf379eb39ef955bb3e2df4be81f4503.jpg"
-    if (!newPerson.id) {
-      dispatch({type: "Add",payload:{e,firstName,familyName,number,email,category,favorite,image}})
-    }
-    else{
-      dispatch({type: "Edit",payload:{e,firstName,familyName,number,email,category,favorite,image}})
-    }
+    const firstName = newPerson.firstName;
+    const familyName = newPerson.familyName;
+    const number = newPerson.number;
+    const email = newPerson.email;
+    const category = newPerson.category;
+    const favorite = newPerson.favorite;
+    const image =newPerson.image
+    dispatch({
+      type: "Edit",
+      payload: {
+        e,
+        ID,
+        firstName,
+        familyName,
+        number,
+        email,
+        category,
+        favorite,
+        image,
+      },
+    });
     setNewPerson({
       firstName: "",
       familyName: "",
@@ -44,7 +51,7 @@ const Create = ({ InputAtribute }) => {
     const { name, value } = e.target;
     setNewPerson({ ...newPerson, [name]: value });
   };
-  return (
+    return (
     <Container>
       <Row>
         <Link to="/">
@@ -54,55 +61,62 @@ const Create = ({ InputAtribute }) => {
           />{" "}
         </Link>
       </Row>
-      <Row className="mt-3">
-        <Col className="ImgContainer">
-          <img
-            height={250}
-            src="https://i.pinimg.com/564x/4c/f3/79/4cf379eb39ef955bb3e2df4be81f4503.jpg"
-            alt="avatar"
-          />
-        </Col>
-      </Row>
-      <Row className="mt-3">
-        <form onSubmit={handleAdd}>
-          {InputAtribute.map((item) => (
-            <div key={item.key}>
-              <label htmlFor={item.name} className="m-2">
-                {item.icon}
-              </label>
-              <input
-                className="m-2"
-                required
-                type="text"
-                placeholder={item.name}
-                name={item.name}
-                value={item.value}
-                id={item.value}
-                onChange={handleChange}
-              ></input>
-              <br />
-            </div>
-          ))}
-          <Row>
-            <Col>
-              <Button type="submit" className="SubmitBtn">
-                  <AddBoxIcon style={{ color: "#248888" }} fontSize="large" />
-              </Button>
-            </Col>
-            <Col xs={3}>
-              <Button>
-                <StarIcon
-                  fontSize="large"
-                  color={newPerson.favorite === true ? "warning" : "disabled"}
-                  className="x-2"
-                />
-              </Button>
-            </Col>
-          </Row>
-        </form>
-      </Row>
+      {person
+        .filter((item) => item.id === JSON.parse(ID))
+        .map((item) => (
+          <div key={item.id}>
+            <Row className="mt-3">
+              <Col className="ImgContainer">
+                <img height={250} src={item.image} alt="avatar" />
+              </Col>
+            </Row>
+            <Row className="mt-3">
+              <form onSubmit={(e)=>handleEdit(item.id,e)}>
+                {InputAtribute.map((item) => (
+                  <div key={item.key}>
+                    <label htmlFor={item.name} className="m-2">
+                      {item.icon}
+                    </label>
+                    <input
+                      className="m-2"
+                      required
+                      type="text"
+                      placeholder={item.name}
+                      name={item.name}
+                      value={item.value}
+                      id={item.value}
+                      onChange={handleChange}
+                    ></input>
+                    <br />
+                  </div>
+                ))}
+                <Row>
+                  <Col>
+                    <Button type="submit" className="SubmitBtn">
+                      <ModeEditIcon
+                        style={{ color: "#248888" }}
+                        fontSize="large"
+                      />
+                    </Button>
+                  </Col>
+                  <Col xs={3}>
+                    <Button>
+                      <StarIcon
+                        fontSize="large"
+                        color={
+                          newPerson.favorite === true ? "warning" : "disabled"
+                        }
+                        className="x-2"
+                      />
+                    </Button>
+                  </Col>
+                </Row>
+              </form>
+            </Row>
+          </div>
+        ))}
     </Container>
   );
 };
 
-export default Create;
+export default Edit;

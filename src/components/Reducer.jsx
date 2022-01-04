@@ -17,10 +17,11 @@ const Reducer = (state, action) => {
       ];
     case "Edit":
       return state.map((oldPerson) =>
-        oldPerson.id === payload.id
+        oldPerson.id === payload.ID
           ? {
+              id: payload.ID,
               firstName: payload.firstName,
-              familyName: payload.firstName,
+              familyName: payload.familyName,
               number: payload.number,
               email: payload.email,
               category: payload.category,
