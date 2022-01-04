@@ -1,8 +1,8 @@
-
 .divider {
-  padding: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  border-bottom: 1px grey solid;
-  box-shadow: 1px grey;
-}
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px grey solid;
+    background-color:#E6E6E6;
+    border-radius: 10px;
+  }

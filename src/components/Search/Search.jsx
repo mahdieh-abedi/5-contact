@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
-
 import { PersonContext, NewPersonContext, Filter } from "..";
-
 import { Container, Row, Col, Form } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
-
 import { Avatar } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";

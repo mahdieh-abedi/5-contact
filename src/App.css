@@ -11,7 +11,9 @@ a{
   text-decoration: none;
   color:black
 }
-
+a:hover{
+  color:none
+}
 .row {
   padding: 0 10px;
   flex-direction: row;
@@ -25,4 +27,13 @@ a{
 }
 h6{
   padding: 10px;
+}
+
+.divider {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1px grey solid;
+  background-color:#248888;
+  border-radius: 10px;
 }

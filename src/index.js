@@ -4,13 +4,19 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { PersonContextProvider, NewPersonContextProvider } from "./components";
+import {
+  PersonContextProvider,
+  NewPersonContextProvider,
+  FilterProvider,
+} from "./components";
 
 ReactDOM.render(
   <React.StrictMode>
     <PersonContextProvider>
       <NewPersonContextProvider>
-        <App />
+        <FilterProvider>
+          <App />
+        </FilterProvider>
       </NewPersonContextProvider>
     </PersonContextProvider>
   </React.StrictMode>,

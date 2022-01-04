@@ -16,7 +16,7 @@ const Data = [
     number: '09366311134',
     email: "mahsa.abedi@gmail.com",
     category: "Work",
-    favorite:true,
+    favorite:false,
     image:"https://i.pinimg.com/564x/87/ef/af/87efaf2d645b47881326faa8a238aaea.jpg"
   },
   {
@@ -26,7 +26,7 @@ const Data = [
     number: '09127076879',
     email: "mohammad.abedi@gmail.com",
     category: "Family",
-    favorite:true,
+    favorite:false,
     image:"https://i.pinimg.com/564x/a5/70/3e/a5703ea8ff2210d22ed4b21008c60267.jpg"
   },
   {
@@ -56,7 +56,7 @@ const Data = [
     number: '09101442049',
     email: "babak.emkani@gmail.com",
     category: "Friend",
-    favorite:true,
+    favorite:false,
     image:"https://i.pinimg.com/564x/d3/3a/2d/d33a2d1b538f71b19af66d2276aa10e1.jpg"
   },
 ];

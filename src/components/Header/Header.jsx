@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Header.css"
+
 import { Form, Row, Col } from "react-bootstrap";
 
 import { Outlet, Link } from "react-router-dom"; 
@@ -10,10 +12,10 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 const Header = () => {
   return (
     <>
-      <Row position="sticky" className="secondColor">
+      <Row position="sticky" className="headerStyle">
         <Col>
           <Link to="/setting">
-            <MenuIcon color="action" fontSize="large" className="mx-2" />
+            <MenuIcon style={{color:"#248888"}} fontSize="large" className="mx-2" />
           </Link>
         </Col>
         <Col xs={7}>
@@ -26,7 +28,7 @@ const Header = () => {
         </Col>
         <Col>
           <Link to="/createandupdate">
-            <AddBoxIcon color="success" fontSize="large" />
+            <AddBoxIcon style={{color:"#248888"}} fontSize="large" />
           </Link>
         </Col>
       </Row>

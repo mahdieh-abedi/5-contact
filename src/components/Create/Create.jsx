@@ -4,54 +4,18 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-import {PersonContext,NewPersonContext} from ".."
+import { PersonContext, NewPersonContext } from "..";
 
 import StarIcon from "@mui/icons-material/Star";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
-import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
-import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
-import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+
 import { useContext } from "react";
 
-const Create = () => {
-  const{person,setPerson}=useContext(PersonContext)
-  const{newPerson,setNewPerson}=useContext(NewPersonContext)
-  
-  const InputAtribute = [
-    {
-      key: 1,
-      name: "firstName",
-      icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
-      value: newPerson.firstName,
-    },
-    {
-      key: 2,
-      name: "familyName",
-      icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
-      value: newPerson.familyName,
-    },
-    {
-      key: 3,
-      name: "number",
-      icon: <CallOutlinedIcon fontSize="large" />,
-      value: newPerson.number,
-    },
-    {
-      key: 4,
-      name: "email",
-      icon: <MarkunreadOutlinedIcon fontSize="large" />,
-      value: newPerson.email,
-    },
-    {
-      key: 5,
-      name: "category",
-      icon: <CategoryOutlinedIcon fontSize="large" />,
-      value: newPerson.category,
-    },
-  ];
+const Create = ({ InputAtribute }) => {
+  const { person, setPerson } = useContext(PersonContext);
+  const { newPerson, setNewPerson } = useContext(NewPersonContext);
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -123,19 +87,18 @@ const Create = () => {
           ))}
           <Row>
             <Col>
-              <Button type="submit" className="SubmitBtn">
+              <Button
+                type="submit"
+                className="SubmitBtn"
+              >
                 {newPerson.id ? (
-                  <>
-                    <ModeEditIcon
-                      color="action"
-                      className="m-2"
-                      fontSize="large"
-                    />
-                  </>
+                  <ModeEditIcon
+                    color="action"
+                    className="m-2"
+                    fontSize="large"
+                  />
                 ) : (
-                  <>
-                    <AddBoxIcon color="success" fontSize="large" />
-                  </>
+                  <AddBoxIcon style={{color:"#00F5D4"}} fontSize="large" />
                 )}
               </Button>
             </Col>

@@ -1,9 +1,10 @@
 import "./App.css";
-
 import { useContext } from "react";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
+import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
+import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import {
   Header,
   Home,
@@ -15,16 +16,51 @@ import {
   Friend,
   PersonProfile,
   PersonContext,
-  FilterProvider,
+  NewPersonContext,
 } from "./components";
 
 function App() {
   const { person } = useContext(PersonContext);
+  const{newPerson}=useContext(NewPersonContext)
+
   const sortDataByFirstName = person.sort((a, b) =>
     a.firstName > b.firstName ? 1 : -1
   );
+
+  const InputAtribute = [
+    {
+      key: 1,
+      name: "firstName",
+      icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
+      value: newPerson.firstName,
+    },
+    {
+      key: 2,
+      name: "familyName",
+      icon: <PermContactCalendarOutlinedIcon fontSize="large" />,
+      value: newPerson.familyName,
+    },
+    {
+      key: 3,
+      name: "number",
+      icon: <CallOutlinedIcon fontSize="large" />,
+      value: newPerson.number,
+    },
+    {
+      key: 4,
+      name: "email",
+      icon: <MarkunreadOutlinedIcon fontSize="large" />,
+      value: newPerson.email,
+    },
+    {
+      key: 5,
+      name: "category",
+      icon: <CategoryOutlinedIcon fontSize="large" />,
+      value: newPerson.category,
+    },
+  ];
+
   return (
-    <FilterProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}>
@@ -36,7 +72,7 @@ function App() {
           <Route path="profile/:ID" element={<PersonProfile />} />
           <Route path="search" element={<Search />} />
           <Route path="setting" element={<Setting />} />
-          <Route path="createandupdate" element={<Create />} />
+          <Route path="createandupdate" element={<Create InputAtribute={InputAtribute}/>} />
           <Route
             path="family"
             element={<Family sortDataByFirstName={sortDataByFirstName} />}
@@ -51,7 +87,6 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </FilterProvider>
   );
 }
 

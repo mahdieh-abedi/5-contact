@@ -1,4 +1,11 @@
-.setting{
-    width: 350px;
-    background-color: rgb(123, 167, 123);
-}
+
+.divider {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px grey solid;
+    background-color:var(--bs-gray-500);
+    border-radius: 10px;
+  
+  }
+  

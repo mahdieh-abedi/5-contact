@@ -6,7 +6,7 @@ export const PersonContext = createContext({person:[],setPerson:()=>{}});
 
 const PersonContextProvider = ({ children }) => {
     const [person, setPerson] = useState(
-        JSON.parse(localStorage.getItem("contacts")) || Data
+      JSON.parse(localStorage.getItem("contacts")) || Data
       );
     
   useEffect(() => {
