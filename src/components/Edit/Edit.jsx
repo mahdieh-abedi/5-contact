@@ -24,7 +24,7 @@ const Edit = ({ InputAtribute }) => {
     const email = newPerson.email;
     const category = newPerson.category;
     const favorite = newPerson.favorite;
-    const image =newPerson.image
+    const image = newPerson.image;
     dispatch({
       type: "Edit",
       payload: {
@@ -51,7 +51,7 @@ const Edit = ({ InputAtribute }) => {
     const { name, value } = e.target;
     setNewPerson({ ...newPerson, [name]: value });
   };
-    return (
+  return (
     <Container>
       <Row>
         <Link to="/">
@@ -71,7 +71,7 @@ const Edit = ({ InputAtribute }) => {
               </Col>
             </Row>
             <Row className="mt-3">
-              <form onSubmit={(e)=>handleEdit(item.id,e)}>
+              <form onSubmit={(e) => handleEdit(item.id, e)}>
                 {InputAtribute.map((item) => (
                   <div key={item.key}>
                     <label htmlFor={item.name} className="m-2">
@@ -93,10 +93,10 @@ const Edit = ({ InputAtribute }) => {
                 <Row>
                   <Col>
                     <Button type="submit" className="SubmitBtn">
-                      <ModeEditIcon
-                        style={{ color: "#248888" }}
-                        fontSize="large"
-                      />
+                        <ModeEditIcon
+                          style={{ color: "#248888" }}
+                          fontSize="large"
+                        />
                     </Button>
                   </Col>
                   <Col xs={3}>
