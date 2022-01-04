@@ -27,7 +27,7 @@ const Header = () => {
           </Link>
         </Col>
         <Col>
-          <Link to="/createandupdate">
+          <Link to="/create">
             <AddBoxIcon style={{color:"#248888"}} fontSize="large" />
           </Link>
         </Col>

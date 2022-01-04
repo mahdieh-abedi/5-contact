@@ -7,9 +7,9 @@ import { FavoriteList, SortList} from "..";
 const Home = ({sortDataByFirstName}) => {
   return (
     <Container>
-      <h3 className="divider">Favorite List</h3>
+      <div className="divider">Favorite List</div>
       <FavoriteList sortDataByFirstName={sortDataByFirstName}/>
-      <h3 className="divider">All Contacts</h3>
+      <div className="divider">All Contacts</div>
       <SortList sortDataByFirstName={sortDataByFirstName}/>
     </Container>
   );

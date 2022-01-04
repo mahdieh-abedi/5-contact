@@ -25,7 +25,10 @@ const Friend = ({sortDataByFirstName }) => {
     <Container>
       <Row>
         <Link to="/setting">
-          <ArrowBackIosNewIcon sx={{ fontSize: 30 }} color="action" />
+        <ArrowBackIosNewIcon
+            sx={{ fontSize: 25 }}
+            style={{ color: "#E6E6E6" }}
+          />
         </Link>
       </Row>
       <div className="divider">Friend list</div>

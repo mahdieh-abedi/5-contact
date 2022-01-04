@@ -29,6 +29,9 @@ const Create = ({ InputAtribute }) => {
     if (!newPerson.id) {
       dispatch({type: "Add",payload:{e,firstName,familyName,number,email,category,favorite,image}})
     }
+    else{
+      dispatch({type: "Edit",payload:{e,firstName,familyName,number,email,category,favorite,image}})
+    }
     setNewPerson({
       firstName: "",
       familyName: "",

@@ -6,8 +6,7 @@ import { PersonContext, NewPersonContext } from "..";
 
 import { Link } from "react-router-dom";
 
-import { Avatar,Checkbox } from "@mui/material";
-import { red } from "@mui/material/colors";
+import { Avatar, Checkbox } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
@@ -15,19 +14,15 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 const FavoriteList = () => {
-  const { person, setPerson } = useContext(PersonContext);
+  const { person ,dispatch } = useContext(PersonContext);
   const { setNewPerson } = useContext(NewPersonContext);
 
-  const handleDelet = (id) => {
-    setPerson(person.filter((item) => item.id !== id));
+  const handleDelete = (ID) => {
+    dispatch({type: "Delete",payload:{ID}})
   };
-
-  const handleFavorite = (e, id) => {
-    setPerson(
-      person.map((item) =>
-        item.id === id ? { ...item, favorite: e.target.checked } : item
-      )
-    );
+  const handleFavorite = (ID, e) => {
+    e.preventDefault();
+    dispatch({type: "Favorite",payload:{ID,e}})
   };
   return (
     <>
@@ -58,14 +53,14 @@ const FavoriteList = () => {
               </Col>
               <Col>
                 <ClearIcon
-                  sx={{ color: red[500] }}
-                  onClick={() => handleDelet(item.id)}
+                  style={{ color: "#E7475E" }}
+                  onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
-                <Link to="/createandupdate">
+                <Link to="/edit">
                   <ModeEditIcon
-                    color="action"
+                    style={{ color: "#E6E6E6" }}
                     onClick={() => {
                       setNewPerson(item);
                     }}

@@ -1,4 +1,5 @@
 import Create from "./Create/Create";
+import Edit from "./Edit/Edit"
 import Home from "./Home/Home";
 import Profile from "./PersonProfile/PersonProfile";
 import Search from "./Search/Search";
@@ -14,9 +15,11 @@ import Work from "./Work/Work"
 import PersonContextProvider,{PersonContext} from "./Context/PersonContext";
 import NewPersonContextProvider,{NewPersonContext} from "./Context/NewPersonContext";
 import FilterProvider,{Filter} from "./Context/FilterContext";
+import Reducer from "./Reducer"
 
 export {
   Create,
+  Edit,
   Home,
   Profile,
   Search,
@@ -34,5 +37,6 @@ export {
   NewPersonContextProvider,
   NewPersonContext,
   FilterProvider,
-  Filter
+  Filter,
+  Reducer
 };

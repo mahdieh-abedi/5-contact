@@ -21,7 +21,10 @@ const Search = () => {
     <Container>
       <Row>
         <Link to="/">
-          <ArrowBackIosNewIcon sx={{ fontSize: 30 }} color="action" />
+          <ArrowBackIosNewIcon
+            sx={{ fontSize: 25 }}
+            style={{ color: "#E6E6E6" }}
+          />
         </Link>
       </Row>
       <Row className="mt-3">

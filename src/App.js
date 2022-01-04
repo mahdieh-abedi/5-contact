@@ -10,6 +10,7 @@ import {
   Home,
   Search,
   Create,
+  Edit,
   Family,
   Setting,
   Work,
@@ -72,7 +73,8 @@ function App() {
           <Route path="profile/:ID" element={<PersonProfile />} />
           <Route path="search" element={<Search />} />
           <Route path="setting" element={<Setting />} />
-          <Route path="createandupdate" element={<Create InputAtribute={InputAtribute}/>} />
+          <Route path="create" element={<Create InputAtribute={InputAtribute}/>} />
+          <Route path="edit" element={<Edit InputAtribute={InputAtribute}/>} />
           <Route
             path="family"
             element={<Family sortDataByFirstName={sortDataByFirstName} />}

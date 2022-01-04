@@ -1,10 +1,10 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-import {PersonContext,NewPersonContext} from ".."
+import { PersonContext, NewPersonContext } from "..";
 
 import { Avatar } from "@mui/material";
 import { red } from "@mui/material/colors";
@@ -14,9 +14,9 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const Work = ({sortDataByFirstName }) => {
-  const{person,setPerson}=useContext(PersonContext)
-  const{setNewPerson}=useContext(NewPersonContext)
+const Work = ({ sortDataByFirstName }) => {
+  const { person, setPerson } = useContext(PersonContext);
+  const { setNewPerson } = useContext(NewPersonContext);
 
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
@@ -25,12 +25,15 @@ const Work = ({sortDataByFirstName }) => {
     <Container>
       <Row>
         <Link to="/setting">
-          <ArrowBackIosNewIcon sx={{ fontSize: 30 }} color="action" />
+          <ArrowBackIosNewIcon
+            sx={{ fontSize: 25 }}
+            style={{ color: "#E6E6E6" }}
+          />{" "}
         </Link>
       </Row>
       <div className="divider">Work list</div>
-      {sortDataByFirstName
-        .filter((item) => item.category === "Work").length === 0 ? (
+      {sortDataByFirstName.filter((item) => item.category === "Work").length ===
+      0 ? (
         <h6>there is no work category in your contacts</h6>
       ) : (
         sortDataByFirstName
