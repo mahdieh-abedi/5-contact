@@ -22,7 +22,9 @@ import {
   LightTheme,
   DarkTheme,
 } from "./components";
+
 const StyledApp=styled.div
+
 function App() {
   const { person } = useContext(PersonContext);
   const { newPerson } = useContext(NewPersonContext);

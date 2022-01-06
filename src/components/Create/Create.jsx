@@ -1,16 +1,11 @@
 import "./Create.css";
-
-import { Container, Row, Col, Button } from "react-bootstrap";
-
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
-import { PersonContext, NewPersonContext } from "..";
-
+import { Container, Row, Col, Button } from "react-bootstrap";
 import StarIcon from "@mui/icons-material/Star";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-
-import { useContext } from "react";
+import { PersonContext, NewPersonContext } from "..";
 
 const Create = ({ InputAtribute }) => {
   const { dispatch } = useContext(PersonContext);
