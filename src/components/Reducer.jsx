@@ -6,13 +6,7 @@ const Reducer = (state, action) => {
         ...state,
         {
           id: Math.floor(Math.random() * 10000),
-          firstName: payload.firstName,
-          familyName: payload.firstName,
-          number: payload.number,
-          email: payload.email,
-          category: payload.category,
-          favorite: payload.favorite,
-          image: payload.image,
+          ...payload.newPerson
         },
       ];
     case "Edit":
@@ -20,13 +14,7 @@ const Reducer = (state, action) => {
         oldPerson.id === payload.ID
           ? {
               id: payload.ID,
-              firstName: payload.firstName,
-              familyName: payload.familyName,
-              number: payload.number,
-              email: payload.email,
-              category: payload.category,
-              favorite: payload.favorite,
-              image: payload.image,
+              ...payload.newPerson
             }
           : oldPerson
       );

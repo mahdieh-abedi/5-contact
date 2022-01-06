@@ -18,25 +18,11 @@ const Edit = ({ InputAtribute }) => {
 
   const handleEdit = (ID, e) => {
     e.preventDefault();
-    const firstName = newPerson.firstName;
-    const familyName = newPerson.familyName;
-    const number = newPerson.number;
-    const email = newPerson.email;
-    const category = newPerson.category;
-    const favorite = newPerson.favorite;
-    const image = newPerson.image;
     dispatch({
       type: "Edit",
       payload: {
-        e,
-        ID,
-        firstName,
-        familyName,
-        number,
-        email,
-        category,
-        favorite,
-        image,
+        newPerson,
+
       },
     });
     setNewPerson({
@@ -63,7 +49,7 @@ const Edit = ({ InputAtribute }) => {
       </Row>
       {person
         .filter((item) => item.id === JSON.parse(ID))
-        .map((item) => (
+        .map((item) => ( 
           <div key={item.id}>
             <Row className="mt-3">
               <Col className="ImgContainer">

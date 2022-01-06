@@ -13,20 +13,18 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import { useContext } from "react";
 
 const Create = ({ InputAtribute }) => {
-  const {dispatch } = useContext(PersonContext);
+  const { dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
 
   const handleAdd = (e) => {
     e.preventDefault();
-    const firstName=newPerson.firstName
-    const familyName=newPerson.familyName
-    const number=newPerson.number
-    const email=newPerson.email
-    const category=newPerson.category
-    const favorite=false
-    const image="https://i.pinimg.com/564x/4c/f3/79/4cf379eb39ef955bb3e2df4be81f4503.jpg"
     if (!newPerson.id) {
-      dispatch({type: "Add",payload:{e,firstName,familyName,number,email,category,favorite,image}})
+      dispatch({
+        type: "Add",
+        payload: {
+          newPerson,
+        },
+      });
     }
     setNewPerson({
       firstName: "",
@@ -82,7 +80,7 @@ const Create = ({ InputAtribute }) => {
           <Row>
             <Col>
               <Button type="submit" className="SubmitBtn">
-                  <AddBoxIcon style={{ color: "#248888" }} fontSize="large" />
+                <AddBoxIcon style={{ color: "#248888" }} fontSize="large" />
               </Button>
             </Col>
             <Col xs={3}>
