@@ -8,12 +8,15 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import StarIcon from '@mui/icons-material/Star';
 import {PersonContext} from ".."
+import { ThemeContext } from "../Context/ThemeContext";
 
 const PersonProfile = () => {
+  const{theme}=useContext(ThemeContext)
+
   const{person}=useContext(PersonContext)
   const { ID } = useParams();
   return (
-    <Container>
+    <Container  style={{ backgroundColor: theme.backGround}}>
       <Row>
         <Link to="/">
         <ArrowBackIosNewIcon

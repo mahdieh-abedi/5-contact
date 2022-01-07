@@ -9,8 +9,10 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { red } from "@mui/material/colors";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 const Search = () => {
+  const{theme}=useContext(ThemeContext)
   const { person, setPerson } = useContext(PersonContext);
   const { setNewPerson } = useContext(NewPersonContext);
   const { filter, setFilter } = useContext(Filter);
@@ -18,7 +20,7 @@ const Search = () => {
     setPerson(person.filter((item) => item.id !== id));
   };
   return (
-    <Container>
+    <Container  style={{ backgroundColor: theme.backGround}}>
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon

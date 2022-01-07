@@ -6,7 +6,7 @@ const Reducer = (state, action) => {
         ...state,
         {
           id: Math.floor(Math.random() * 10000),
-          ...payload.newPerson
+          ...payload.newPerson,
         },
       ];
     case "Edit":
@@ -14,7 +14,7 @@ const Reducer = (state, action) => {
         oldPerson.id === payload.ID
           ? {
               id: payload.ID,
-              ...payload.newPerson
+              ...payload.newPerson,
             }
           : oldPerson
       );

@@ -1,15 +1,19 @@
+import React,{useContext} from "react";
 import { Container } from "react-bootstrap";
 import { FavoriteList, SortList } from "..";
+import { ThemeContext } from "../Context/ThemeContext";
 
 const Home = ({ sortDataByFirstName }) => {
+  const{theme}=useContext(ThemeContext)
+
   return (
-    <Container>
+    <Container  style={{ backgroundColor: theme.backGround, color:theme.color} }>
       <div
         style={{
           padding: 10,
           fontSize: 14,
           fontWeight: 900,
-          backgroundColor: "#248888",
+          backgroundColor: theme.dividerBackground,
           borderRadius: 10,
         }}
       >
@@ -21,7 +25,7 @@ const Home = ({ sortDataByFirstName }) => {
           padding: 10,
           fontSize: 14,
           fontWeight: 900,
-          backgroundColor: "#248888",
+          backgroundColor: theme.dividerBackground,
           borderRadius: 10,
         }}
       >

@@ -6,8 +6,10 @@ import StarIcon from "@mui/icons-material/Star";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { PersonContext, NewPersonContext } from "../..";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 const Create = ({ InputAtribute }) => {
+  const{theme}=useContext(ThemeContext)
   const { dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
   const handleAdd = (e) => {
@@ -33,12 +35,12 @@ const Create = ({ InputAtribute }) => {
     setNewPerson({ ...newPerson, [name]: value });
   };
   return (
-    <Container>
+    <Container  style={{ backgroundColor: theme.backGround}}> 
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: "#E6E6E6" }}
+            style={{ color: theme.iconColor }}
           />{" "}
         </Link>
       </Row>
@@ -55,7 +57,7 @@ const Create = ({ InputAtribute }) => {
         <form onSubmit={handleAdd}>
           {InputAtribute.map((item) => (
             <div key={item.key}>
-              <label htmlFor={item.name} className="m-2">
+              <label htmlFor={item.name} className="m-2"  style={{ color: theme.iconColor }}>
                 {item.icon}
               </label>
               <input
@@ -81,7 +83,7 @@ const Create = ({ InputAtribute }) => {
               <Button>
                 <StarIcon
                   fontSize="large"
-                  color={newPerson.favorite === true ? "warning" : "disabled"}
+                  color={newPerson.favorite === true ? theme.favoriteColor  : theme.iconColor}
                   className="x-2"
                 />
               </Button>

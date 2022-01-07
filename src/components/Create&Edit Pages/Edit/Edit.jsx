@@ -6,8 +6,10 @@ import StarIcon from "@mui/icons-material/Star";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { PersonContext, NewPersonContext } from "../..";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 const Edit = ({ InputAtribute }) => {
+  const{theme}=useContext(ThemeContext)
   const { person, dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
   const { ID } = useParams();
@@ -34,12 +36,12 @@ const Edit = ({ InputAtribute }) => {
     setNewPerson({ ...newPerson, [name]: value });
   };
   return (
-    <Container>
+    <Container  style={{ backgroundColor: theme.backGround}}>
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: "#E6E6E6" }}
+            style={{ color: theme.iconColor }}
           />{" "}
         </Link>
       </Row>
@@ -56,7 +58,7 @@ const Edit = ({ InputAtribute }) => {
               <form onSubmit={(e) => handleEdit(item.id, e)}>
                 {InputAtribute.map((item) => (
                   <div key={item.key}>
-                    <label htmlFor={item.name} className="m-2">
+                    <label htmlFor={item.name} className="m-2"  style={{ color: theme.iconColor }}>
                       {item.icon}
                     </label>
                     <input
@@ -76,7 +78,7 @@ const Edit = ({ InputAtribute }) => {
                   <Col>
                     <Button type="submit" className="SubmitBtn">
                         <ModeEditIcon
-                          style={{ color: "#248888" }}
+                          style={{ color: theme.iconColor }}
                           fontSize="large"
                         />
                     </Button>
@@ -86,7 +88,7 @@ const Edit = ({ InputAtribute }) => {
                       <StarIcon
                         fontSize="large"
                         color={
-                          newPerson.favorite === true ? "warning" : "disabled"
+                          newPerson.favorite === true ? theme.favoriteColor  : theme.iconColor
                         }
                         className="x-2"
                       />

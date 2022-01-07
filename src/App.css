@@ -1,5 +1,5 @@
 .App {
-  width: 80%;
+  width: 90%;
   height: 100vh;
   align-items: baseline;
 }
@@ -12,12 +12,15 @@ a{
   color:black
 }
 a:hover{
-  color:none
+  color:black
 }
 .row {
   padding: 0 10px;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin-right:0 !important;
+  margin-left:0 !important;
+
 }
 .container{
   border: 1px solid rgb(141, 139, 139);

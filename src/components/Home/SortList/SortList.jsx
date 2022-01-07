@@ -8,8 +8,10 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { PersonContext,NewPersonContext } from "../..";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 const SortList = ({ sortDataByFirstName }) => {
+  const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(PersonContext);
   const {setNewPerson } = useContext(NewPersonContext);
   const handleDelete = (ID) => {
@@ -27,8 +29,8 @@ const SortList = ({ sortDataByFirstName }) => {
             <Checkbox
               onChange={(e) => handleFavorite(item.id, e)}
               checked={item.favorite}
-              icon={<StarBorderIcon style={{ color: "#E6E6E6" }} />}
-              checkedIcon={<StarIcon style={{ color: "#F0D879" }} />}
+              icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+              checkedIcon={<StarIcon style={{ color: theme.favoriteColor }} />}
             />
           </Col>
           <Col xs={2}>
@@ -38,19 +40,19 @@ const SortList = ({ sortDataByFirstName }) => {
           </Col>
           <Col xs={4}>
             <Link to={`/profile/${item.id}`}>
-              <h6>{item.firstName}</h6>
+              <h6 style={{color:theme.color}}>{item.firstName}</h6>
             </Link>
           </Col>
           <Col>
             <ClearIcon
-              style={{ color: "#E7475E" }}
+              style={{ color:theme.deleteIcon}}
               onClick={() => handleDelete(item.id)}
             />
           </Col>
           <Col>
             <Link to={`/edit/${item.id}`} >
               <ModeEditIcon
-                style={{ color: "#E6E6E6" }}
+                style={{ color: theme.iconColor }}
                 onClick={() => {
                   setNewPerson(item);
                 }}

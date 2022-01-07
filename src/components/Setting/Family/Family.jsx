@@ -1,35 +1,48 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { Avatar } from "@mui/material";
-import { red } from "@mui/material/colors";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import {PersonContext,NewPersonContext} from "../.."
+import { PersonContext, NewPersonContext } from "../..";
+import { ThemeContext } from "../../Context/ThemeContext";
 
-const Family = ({sortDataByFirstName}) => {
-  const{person,setPerson}=useContext(PersonContext)
-  const{setNewPerson}=useContext(NewPersonContext)
+const Family = ({ sortDataByFirstName }) => {
+  const { theme } = useContext(ThemeContext);
+  const { person, setPerson } = useContext(PersonContext);
+  const {setNewPerson } = useContext(NewPersonContext);
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
   return (
-    <Container>
+    <Container style={{ backgroundColor: theme.backGround }}>
       <Row>
         <Link to="/setting">
-        <ArrowBackIosNewIcon
+          <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: "#E6E6E6" }}
+            style={{ color: theme.iconColor }}
           />
         </Link>
       </Row>
-      <div className="divider">Family list</div>
-      {sortDataByFirstName
-        .filter((item) => item.category === "Family").length === 0 ? (
-        <h6>there is no family category in your contacts</h6>
+      <div
+        style={{
+          padding: 10,
+          fontSize: 14,
+          fontWeight: 900,
+          backgroundColor: theme.dividerBackground,
+          borderRadius: 10,
+        }}
+      >
+        Family list
+      </div>
+      {sortDataByFirstName.filter((item) => item.category === "Family")
+        .length === 0 ? (
+        <h6 style={{ color: theme.color }}>
+          there is no family category in your contacts
+        </h6>
       ) : (
         sortDataByFirstName
           .filter((item) => item.category === "Family")
@@ -37,7 +50,11 @@ const Family = ({sortDataByFirstName}) => {
             <Row key={item.id} className="mt-3">
               <Col>
                 <StarIcon
-                  color={item.favorite === true ? "warning" : "disabled"}
+                  color={
+                    person.favorite === true
+                      ? theme.favoriteColor
+                      : theme.iconColor
+                  }
                 />
               </Col>
               <Col xs={2}>
@@ -47,19 +64,19 @@ const Family = ({sortDataByFirstName}) => {
               </Col>
               <Col xs={4}>
                 <Link to={`/profile/${item.id}`}>
-                  <h6>{item.firstName}</h6>
+                  <h6 style={{ color: theme.color }}>{item.firstName}</h6>
                 </Link>
               </Col>
               <Col>
                 <ClearIcon
-                  sx={{ color: red[500] }}
+                  style={{ color: theme.deleteIcon }}
                   onClick={() => handleDelet(item.id)}
                 />
               </Col>
               <Col>
                 <Link to="/createandupdate">
                   <ModeEditIcon
-                    color="action"
+                    style={{ color: theme.iconColor }}
                     onClick={() => {
                       setNewPerson(item);
                     }}
