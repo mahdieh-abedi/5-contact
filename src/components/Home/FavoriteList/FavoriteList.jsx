@@ -7,7 +7,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import {PersonContext,NewPersonContext} from ".."
+import {PersonContext,NewPersonContext} from "../.."
 
 const FavoriteList = ({sortDataByFirstName}) => {
   const { dispatch } = useContext(PersonContext);

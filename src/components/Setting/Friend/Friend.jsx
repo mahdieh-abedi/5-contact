@@ -8,12 +8,11 @@ import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import {PersonContext,NewPersonContext} from ".."
+import {PersonContext,NewPersonContext} from "../.."
 
-const Work = ({ sortDataByFirstName }) => {
-  const { person, setPerson } = useContext(PersonContext);
-  const { setNewPerson } = useContext(NewPersonContext);
-
+const Friend = ({sortDataByFirstName }) => {
+  const{person,setPerson}=useContext(PersonContext)
+  const{setNewPerson}=useContext(NewPersonContext)
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };
@@ -21,19 +20,19 @@ const Work = ({ sortDataByFirstName }) => {
     <Container>
       <Row>
         <Link to="/setting">
-          <ArrowBackIosNewIcon
+        <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
             style={{ color: "#E6E6E6" }}
-          />{" "}
+          />
         </Link>
       </Row>
-      <div className="divider">Work list</div>
-      {sortDataByFirstName.filter((item) => item.category === "Work").length ===
-      0 ? (
-        <h6>there is no work category in your contacts</h6>
+      <div className="divider">Friend list</div>
+      {sortDataByFirstName
+        .filter((item) => item.category === "Friend").length === 0 ? (
+        <h6>there is no friend category in your contacts</h6>
       ) : (
         sortDataByFirstName
-          .filter((item) => item.category === "Work")
+          .filter((item) => item.category === "Friend")
           .map((item) => (
             <Row key={item.id} className="mt-3">
               <Col>
@@ -74,4 +73,4 @@ const Work = ({ sortDataByFirstName }) => {
   );
 };
 
-export default Work;
+export default Friend;

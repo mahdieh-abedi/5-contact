@@ -1,10 +1,11 @@
 import "./App.css";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+
 import {
   Header,
   Home,
@@ -18,18 +19,14 @@ import {
   PersonProfile,
   PersonContext,
   NewPersonContext,
-  ThemeProvider,
-  ThemeContextProvider,
 } from "./components";
 
 function App() {
   const { person } = useContext(PersonContext);
   const { newPerson } = useContext(NewPersonContext);
-
   const sortDataByFirstName = person.sort((a, b) =>
     a.firstName > b.firstName ? 1 : -1
   );
-
   const InputAtribute = [
     {
       key: 1,
@@ -62,43 +59,40 @@ function App() {
       value: newPerson.category,
     },
   ];
-
   return (
-    <ThemeContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Header />}>
-            <Route
-              index
-              element={<Home sortDataByFirstName={sortDataByFirstName} />}
-            />
-          </Route>
-          <Route path="profile/:ID" element={<PersonProfile />} />
-          <Route path="search" element={<Search />} />
-          <Route path="setting" element={<Setting />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header />}>
           <Route
-            path="create"
-            element={<Create InputAtribute={InputAtribute} />}
+            index
+            element={<Home sortDataByFirstName={sortDataByFirstName} />}
           />
-          <Route
-            path="edit/:ID"
-            element={<Edit InputAtribute={InputAtribute} />}
-          />
-          <Route
-            path="family"
-            element={<Family sortDataByFirstName={sortDataByFirstName} />}
-          />
-          <Route
-            path="friend"
-            element={<Friend sortDataByFirstName={sortDataByFirstName} />}
-          />
-          <Route
-            path="work"
-            element={<Work sortDataByFirstName={sortDataByFirstName} />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </ThemeContextProvider>
+        </Route>
+        <Route path="profile/:ID" element={<PersonProfile />} />
+        <Route path="search" element={<Search />} />
+        <Route path="setting" element={<Setting />} />
+        <Route
+          path="create"
+          element={<Create InputAtribute={InputAtribute} />}
+        />
+        <Route
+          path="edit/:ID"
+          element={<Edit InputAtribute={InputAtribute} />}
+        />
+        <Route
+          path="family"
+          element={<Family sortDataByFirstName={sortDataByFirstName} />}
+        />
+        <Route
+          path="friend"
+          element={<Friend sortDataByFirstName={sortDataByFirstName} />}
+        />
+        <Route
+          path="work"
+          element={<Work sortDataByFirstName={sortDataByFirstName} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

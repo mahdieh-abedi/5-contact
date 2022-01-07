@@ -8,12 +8,11 @@ import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import {PersonContext,NewPersonContext} from ".."
+import {PersonContext,NewPersonContext} from "../.."
 
 const Family = ({sortDataByFirstName}) => {
   const{person,setPerson}=useContext(PersonContext)
   const{setNewPerson}=useContext(NewPersonContext)
-
   const handleDelet = (id) => {
     setPerson(person.filter((item) => item.id !== id));
   };

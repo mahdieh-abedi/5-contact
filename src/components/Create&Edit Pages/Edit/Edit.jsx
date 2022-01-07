@@ -1,4 +1,4 @@
-import "./Edit.css";
+import "../Create&Edit.css";
 import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -11,12 +11,12 @@ const Edit = ({ InputAtribute }) => {
   const { person, dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
   const { ID } = useParams();
-
   const handleEdit = (ID, e) => {
     e.preventDefault();
     dispatch({
       type: "Edit",
       payload: {
+        ID,
         newPerson,
 
       },

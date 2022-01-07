@@ -1,21 +1,16 @@
 import React,{useContext} from "react";
-
-import { Container, Row, Col } from "react-bootstrap";
-
 import { Link, useParams } from "react-router-dom";
-
-import {PersonContext} from ".."
-
+import { Container, Row, Col } from "react-bootstrap";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import CallIcon from "@mui/icons-material/Call";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import StarIcon from '@mui/icons-material/Star';
+import {PersonContext} from ".."
 
 const PersonProfile = () => {
   const{person}=useContext(PersonContext)
-
   const { ID } = useParams();
   return (
     <Container>

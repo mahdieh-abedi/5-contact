@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PersonContext, NewPersonContext, Filter } from "..";
+import { PersonContext, NewPersonContext, Filter } from "../..";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";

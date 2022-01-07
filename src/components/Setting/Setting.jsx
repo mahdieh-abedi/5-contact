@@ -1,19 +1,15 @@
 import React, { useContext } from "react";
-import "./Setting.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { PersonContext} from "..";
+import { PersonContext, ThemeContext, Themes } from "..";
 import WorkIcon from "@mui/icons-material/Work";
 import GroupIcon from "@mui/icons-material/Group";
 import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Switch from "@mui/material/Switch";
 
-const Setting = ({theme,setTheme}) => {
+const Setting = () => {
   const { person } = useContext(PersonContext);
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
   return (
     <Container style={{ width: 300, height: 600 }}>
       <Row>
@@ -29,7 +25,17 @@ const Setting = ({theme,setTheme}) => {
       <Row>
         <Switch color="default" defaultunChecked />
       </Row>
-      <div className="divider">Setting</div>
+      <div
+        style={{
+          padding: 10,
+          fontSize: 14,
+          fontWeight: bold,
+          backgroundColor: "#248888",
+          borderRadius: 10,
+        }}
+      >
+        Setting
+      </div>
       <Row>
         <Col xs={6}>
           <h6>{person.length} Contacts</h6>

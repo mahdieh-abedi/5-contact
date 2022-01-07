@@ -1,4 +1,4 @@
-import "./Create.css";
+import "../Create&Edit.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -10,7 +10,6 @@ import { PersonContext, NewPersonContext } from "..";
 const Create = ({ InputAtribute }) => {
   const { dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
-
   const handleAdd = (e) => {
     e.preventDefault();
     if (!newPerson.id) {

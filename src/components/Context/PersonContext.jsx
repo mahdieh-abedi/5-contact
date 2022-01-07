@@ -1,20 +1,21 @@
-import { useReducer, useEffect, createContext} from "react";
+import { useReducer, useEffect, createContext } from "react";
+import { Data, Reducer } from "..";
 
-import {Data,Reducer} from ".."
-
-export const PersonContext = createContext({person:[],dispatch:()=>{}});
+export const PersonContext = createContext({ person: [], dispatch: () => {} });
 
 const PersonContextProvider = ({ children }) => {
-    const [person, dispatch] = useReducer(
-      Reducer,
-      JSON.parse(localStorage.getItem("contacts")) ||  Data
-      );
-    
+  const [person, dispatch] = useReducer(
+    Reducer,
+    JSON.parse(localStorage.getItem("contacts")) || Data
+  );
   useEffect(() => {
     document.title = "my contacts";
     localStorage.setItem("contacts", JSON.stringify(person));
   }, [person]);
-
-  return <PersonContext.Provider value={{person,dispatch}}>{children}</PersonContext.Provider>;
+  return (
+    <PersonContext.Provider value={{ person, dispatch }}>
+      {children}
+    </PersonContext.Provider>
+  );
 };
-export default PersonContextProvider
+export default PersonContextProvider;
