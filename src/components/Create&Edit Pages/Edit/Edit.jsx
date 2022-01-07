@@ -5,7 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import StarIcon from "@mui/icons-material/Star";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { PersonContext, NewPersonContext } from "..";
+import { PersonContext, NewPersonContext } from "../..";
 
 const Edit = ({ InputAtribute }) => {
   const { person, dispatch } = useContext(PersonContext);

@@ -28,12 +28,3 @@ a:hover{
 h6{
   padding: 10px;
 }
-
-.divider {
-  padding: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  border-bottom: 1px grey solid;
-  background-color:#248888;
-  border-radius: 10px;
-}

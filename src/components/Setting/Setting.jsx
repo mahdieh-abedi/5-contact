@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { PersonContext, ThemeContext, Themes } from "..";
+import { PersonContext} from "..";
 import WorkIcon from "@mui/icons-material/Work";
 import GroupIcon from "@mui/icons-material/Group";
 import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
@@ -29,7 +29,7 @@ const Setting = () => {
         style={{
           padding: 10,
           fontSize: 14,
-          fontWeight: bold,
+          fontWeight: 900,
           backgroundColor: "#248888",
           borderRadius: 10,
         }}
@@ -41,7 +41,17 @@ const Setting = () => {
           <h6>{person.length} Contacts</h6>
         </Col>
       </Row>
-      <div className="divider">Categories</div>
+      <div
+        style={{
+          padding: 10,
+          fontSize: 14,
+          fontWeight: 900,
+          backgroundColor: "#248888",
+          borderRadius: 10,
+        }}
+      >
+        Categories
+      </div>
       <Link to="/family">
         <Row>
           <Col xs={2}>

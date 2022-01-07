@@ -8,7 +8,7 @@ const Home = ({ sortDataByFirstName }) => {
         style={{
           padding: 10,
           fontSize: 14,
-          fontWeight: bold,
+          fontWeight: 900,
           backgroundColor: "#248888",
           borderRadius: 10,
         }}
@@ -20,7 +20,7 @@ const Home = ({ sortDataByFirstName }) => {
         style={{
           padding: 10,
           fontSize: 14,
-          fontWeight: bold,
+          fontWeight: 900,
           backgroundColor: "#248888",
           borderRadius: 10,
         }}

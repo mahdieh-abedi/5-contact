@@ -1,5 +1,5 @@
-import Create from "./Create/Create";
-import Edit from "./Edit/Edit";
+import Create from "./Create&Edit Pages/Create/Create";
+import Edit from "./Create&Edit Pages/Edit/Edit";
 import Home from "./Home/Home";
 import Profile from "./PersonProfile/PersonProfile";
 import Search from "./Home/Search/Search";
