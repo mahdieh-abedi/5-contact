@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { createTheme } from "@mui/material";
-const LightTheme = {
+import { useState,createContext } from "react";
+
+export const LightTheme = {
   body: "#fff",
   fontColor: "000",
   header: "#E6E6E6",
@@ -9,7 +9,7 @@ const LightTheme = {
   starCheck: "#F0D879",
   starUnChech: "#E6E6E6",
 };
-const DarkTheme = {
+export const DarkTheme = {
   body: "#000",
   fontColor: "#fff",
   header: "#E6E6E6",
@@ -18,9 +18,7 @@ const DarkTheme = {
   starCheck: "#F0D879",
   starUnChech: "#E6E6E6",
 };
-
-export { LightTheme, DarkTheme };
-export const ThemeContext = createTheme({ theme: {}, setTheme: () => {} });
+export const ThemeContext = createContext({ theme: {}, setTheme: () => {} });
 const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
   return (
