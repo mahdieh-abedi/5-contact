@@ -1,11 +1,10 @@
 import "./App.css";
-import { useContext,useState } from "react";
+import { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PermContactCalendarOutlinedIcon from "@mui/icons-material/PermContactCalendarOutlined";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import {ThemeProvider} from "styled-components"
 import {
   Header,
   Home,
@@ -19,16 +18,13 @@ import {
   PersonProfile,
   PersonContext,
   NewPersonContext,
-  LightTheme,
-  DarkTheme,
+  ThemeProvider,
+  ThemeContextProvider,
 } from "./components";
-
-const StyledApp=styled.div
 
 function App() {
   const { person } = useContext(PersonContext);
   const { newPerson } = useContext(NewPersonContext);
-  const[theme,setTheme]=useState("light")
 
   const sortDataByFirstName = person.sort((a, b) =>
     a.firstName > b.firstName ? 1 : -1
@@ -68,9 +64,8 @@ function App() {
   ];
 
   return (
-    <ThemeProvider theme={theme==="light"?DarkTheme:LightTheme}>
-     <div className="App">
-     <BrowserRouter>
+    <ThemeContextProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route
@@ -80,7 +75,7 @@ function App() {
           </Route>
           <Route path="profile/:ID" element={<PersonProfile />} />
           <Route path="search" element={<Search />} />
-          <Route path="setting" element={<Setting theme={theme} setTheme={setTheme}/>} />
+          <Route path="setting" element={<Setting />} />
           <Route
             path="create"
             element={<Create InputAtribute={InputAtribute} />}
@@ -103,8 +98,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-     </div>
-      </ThemeProvider>
+    </ThemeContextProvider>
   );
 }
 

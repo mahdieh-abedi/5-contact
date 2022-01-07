@@ -1,23 +1,17 @@
 import React, { useContext } from "react";
-
-import { Row, Col } from "react-bootstrap";
-
-import { PersonContext,NewPersonContext } from "..";
-
 import { Link } from "react-router-dom";
-
-import { Avatar, Checkbox } from "@mui/material";
+import { Row, Col } from "react-bootstrap";
+import { Avatar, Checkbox} from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { PersonContext,NewPersonContext } from "..";
 
 const SortList = ({ sortDataByFirstName }) => {
   const { dispatch } = useContext(PersonContext);
   const {setNewPerson } = useContext(NewPersonContext);
-
-
   const handleDelete = (ID) => {
     dispatch({ type: "Delete", payload: { ID } });
   };

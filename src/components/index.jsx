@@ -16,7 +16,8 @@ import PersonContextProvider,{PersonContext} from "./Context/PersonContext";
 import NewPersonContextProvider,{NewPersonContext} from "./Context/NewPersonContext";
 import FilterProvider,{Filter} from "./Context/FilterContext";
 import Reducer from "./Reducer"
-import { LightTheme,DarkTheme } from "./Theme";
+import { LightTheme,DarkTheme} from "./Theme";
+import ThemeContextProvider,{ThemeContext} from "./Context/ThemeContext";
 
 export {
   Create,
@@ -41,5 +42,7 @@ export {
   Filter,
   Reducer,
   LightTheme,
-  DarkTheme
+  DarkTheme,
+  ThemeContextProvider,
+  ThemeContext
 };
