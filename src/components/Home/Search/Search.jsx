@@ -4,9 +4,8 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
-import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
-import { red } from "@mui/material/colors";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { ThemeContext } from "../../Context/ThemeContext";
@@ -25,7 +24,7 @@ const Search = () => {
         <Link to="/">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: "#E6E6E6" }}
+            style={{ color: theme.iconColor }}
           />
         </Link>
       </Row>
@@ -47,7 +46,7 @@ const Search = () => {
           item.email.toLowerCase().includes(filter.toLowerCase()) ||
           item.number.includes(filter)
       ).length === 0 ? (
-        <h6>o0ops... there is no contact with this name</h6>
+        <h6 style={{ color: theme.color }}>o0ops... there is no contact with this name</h6>
       ) : (
         person
           .filter(
@@ -60,8 +59,12 @@ const Search = () => {
           .map((item) => (
             <Row key={item.id} className="mt-3">
               <Col xs={2}>
-                <StarIcon
-                  color={item.favorite === true ? "warning" : "disabled"}
+              <StarBorderIcon
+                  color={
+                    person.favorite === true
+                      ? theme.favoriteColor
+                      : theme.iconColor
+                  }
                 />
               </Col>
               <Col xs={2}>
@@ -71,19 +74,19 @@ const Search = () => {
               </Col>
               <Col xs={4}>
                 <Link to={`/profile/${item.id}`}>
-                  <h6>{item.firstName}</h6>
+                  <h6 style={{ color: theme.color }}>{item.firstName}</h6>
                 </Link>
               </Col>
               <Col xs={2}>
                 <ClearIcon
-                  sx={{ color: red[500] }}
+                  style={{ color: theme.deleteIcon }}
                   onClick={() => handleDelet(item.id)}
                 />
               </Col>
               <Col>
                 <Link to="/createandupdate">
                   <ModeEditIcon
-                    color="action"
+                   style={{ color: theme.iconColor }}
                     onClick={() => {
                       setNewPerson(item);
                     }}

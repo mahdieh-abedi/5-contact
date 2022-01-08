@@ -8,33 +8,11 @@ import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Switch from "@mui/material/Switch";
 import { ThemeContext } from "../Context/ThemeContext";
+import Themes from "../Context/Themes";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 const Setting = () => {
-  const Themes = {
-    dark: {
-      status: true,
-      color: "white",
-      buttonColor: "#248888",
-      iconColor: "#E6E6E6",
-      favoriteColor:"#F0D879",
-      deleteIcon:"#E7475E",
-      dividerBackground: "#248888",
-      backGround: "black",
-      headerBachGround: "black",
-    },
-
-    light: {
-      status: false,
-      color: "black",
-      buttonColor: "#248888",
-      iconColor: "#E6E6E6",
-      favoriteColor:"#F0D879",
-      deleteIcon:"#E7475E",
-      dividerBackground: "#248888",
-      backGround: "white",
-      headerBachGround: "#E6E6E6",
-    },
-  };
   const { theme, setTheme } = useContext(ThemeContext);
   const { person } = useContext(PersonContext);
   const handleChangeTheme = (e) => {
@@ -50,7 +28,7 @@ const Setting = () => {
         color: theme.color,
       }}
     >
-      <Row>
+      <Row  className="mt-3" >
         <Col xs={12}>
           <Link to="/">
             <ArrowBackIosNewIcon
@@ -60,14 +38,21 @@ const Setting = () => {
           </Link>
         </Col>
       </Row>
-      <Row>
-        <Switch
-          checked={theme.status}
-          color="default"
-          onChange={(e) => handleChangeTheme(e)}
-        />
+      <Row  className="mt-3">
+        <Col xs={6} style={{ color: theme.color, fontWeight:500}}>
+            Change Mode:
+        </Col>
+        <Col xs={6}>
+          <LightModeIcon sx={{ fontSize: 20 }} style={{ color: theme.color }} />
+          <Switch
+            checked={theme.status}
+            color="default"
+            onChange={(e) => handleChangeTheme(e)}
+          />
+          <DarkModeIcon sx={{ fontSize: 20 }} style={{ color: theme.color }} />
+        </Col>
       </Row>
-      <div
+      <div className="mt-5"
         style={{
           padding: 10,
           fontSize: 14,
@@ -80,7 +65,7 @@ const Setting = () => {
       </div>
       <Row>
         <Col xs={6}>
-          <h6 style={{color:theme.color}}>{person.length} Contacts</h6>
+          <h6 style={{ color: theme.color }}>{person.length} Contacts</h6>
         </Col>
       </Row>
       <div
@@ -95,30 +80,30 @@ const Setting = () => {
         Categories
       </div>
       <Link to="/family">
-        <Row>
+        <Row  className="mt-3">
           <Col xs={2}>
             <FamilyRestroomIcon
               style={{ color: theme.iconColor }}
               fontSize="large"
             />
           </Col>
-          <Col style={{color:theme.color}}>Family</Col>
+          <Col style={{ color: theme.color }}>Family</Col>
         </Row>
       </Link>
       <Link to="/friend">
-        <Row>
+        <Row  className="mt-3">
           <Col xs={2}>
             <GroupIcon style={{ color: theme.iconColor }} fontSize="large" />
           </Col>
-          <Col style={{color:theme.color}}>Friend</Col>
+          <Col style={{ color: theme.color }}>Friend</Col>
         </Row>
       </Link>
       <Link to="/work">
-        <Row>
+        <Row  className="mt-3">
           <Col xs={2}>
             <WorkIcon style={{ color: theme.iconColor }} fontSize="large" />
           </Col>
-          <Col style={{color:theme.color}}>Work</Col>
+          <Col style={{ color: theme.color }}>Work</Col>
         </Row>
       </Link>
     </Container>

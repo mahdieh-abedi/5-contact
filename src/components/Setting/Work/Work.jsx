@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { Avatar } from "@mui/material";
+import { Avatar, Checkbox } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -12,10 +13,14 @@ import { ThemeContext } from "../../Context/ThemeContext";
 
 const Work = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);
-  const { person, setPerson } = useContext(PersonContext);
-  const {setNewPerson } = useContext(NewPersonContext);
-  const handleDelet = (id) => {
-    setPerson(person.filter((item) => item.id !== id));
+  const {dispatch } = useContext(PersonContext);
+  const { setNewPerson } = useContext(NewPersonContext);
+  const handleDelete = (ID) => {
+    dispatch({ type: "Delete", payload: { ID } });
+  };
+  const handleFavorite = (ID, e) => {
+    e.preventDefault();
+    dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
   return (
     <Container style={{ backgroundColor: theme.backGround }}>
@@ -40,19 +45,23 @@ const Work = ({ sortDataByFirstName }) => {
       </div>
       {sortDataByFirstName.filter((item) => item.category === "Work").length ===
       0 ? (
-        <h6 style={{ color: theme.color }}>there is no work category in your contacts</h6>
+        <h6 style={{ color: theme.color }}>
+          there is no work category in your contacts
+        </h6>
       ) : (
         sortDataByFirstName
           .filter((item) => item.category === "Work")
           .map((item) => (
             <Row key={item.id} className="mt-3">
               <Col>
-                <StarIcon
-                  color={
-                    person.favorite === true
-                      ? theme.favoriteColor
-                      : theme.iconColor
-                  }                />
+              <Checkbox
+                  onChange={(e) => handleFavorite(item.id, e)}
+                  checked={item.favorite}
+                  icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                  checkedIcon={
+                    <StarIcon style={{ color: theme.favoriteColor }} />
+                  }
+                />
               </Col>
               <Col xs={2}>
                 <Link to={`/profile/${item.id}`}>
@@ -67,11 +76,11 @@ const Work = ({ sortDataByFirstName }) => {
               <Col>
                 <ClearIcon
                   style={{ color: theme.deleteIcon }}
-                  onClick={() => handleDelet(item.id)}
+                  onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
-                <Link to="/createandupdate">
+                <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
                     style={{ color: theme.iconColor }}
                     onClick={() => {

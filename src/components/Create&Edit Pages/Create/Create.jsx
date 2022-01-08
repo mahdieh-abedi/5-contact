@@ -1,15 +1,17 @@
 import "../Create&Edit.css";
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import StarIcon from "@mui/icons-material/Star";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import Alert from "@mui/material/Alert";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
+import {AlertContext} from "../../Context/AlertContect";
 
 const Create = ({ InputAtribute }) => {
-  const{theme}=useContext(ThemeContext)
+  const {alert, setAlert} = useContext(AlertContext);
+  const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
   const handleAdd = (e) => {
@@ -29,13 +31,14 @@ const Create = ({ InputAtribute }) => {
       email: "",
       category: "",
     });
+    alert === "none" ? setAlert("block") : setAlert("none")
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewPerson({ ...newPerson, [name]: value });
   };
   return (
-    <Container  style={{ backgroundColor: theme.backGround}}> 
+    <Container style={{ backgroundColor: theme.backGround }}>
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon
@@ -57,7 +60,11 @@ const Create = ({ InputAtribute }) => {
         <form onSubmit={handleAdd}>
           {InputAtribute.map((item) => (
             <div key={item.key}>
-              <label htmlFor={item.name} className="m-2"  style={{ color: theme.iconColor }}>
+              <label
+                htmlFor={item.name}
+                className="m-2"
+                style={{ color: theme.iconColor }}
+              >
                 {item.icon}
               </label>
               <input
@@ -73,22 +80,20 @@ const Create = ({ InputAtribute }) => {
               <br />
             </div>
           ))}
-          <Row>
-            <Col>
-              <Button type="submit" className="SubmitBtn">
-                <AddBoxIcon style={{ color: "#248888" }} fontSize="large" />
-              </Button>
-            </Col>
-            <Col xs={3}>
-              <Button>
-                <StarIcon
-                  fontSize="large"
-                  color={newPerson.favorite === true ? theme.favoriteColor  : theme.iconColor}
-                  className="x-2"
-                />
-              </Button>
-            </Col>
-          </Row>
+          <div className="buttonBox">
+            <Button type="submit" className="SubmitBtn">
+              <AddBoxIcon
+                style={{ color: theme.buttonColor }}
+                sx={{ fontSize: 40 }}
+              />
+            </Button>
+            <Alert
+              severity="success"
+              style={{ display: alert ,width:200}}
+            >
+              Contact Added{" "}
+            </Alert>
+          </div>
         </form>
       </Row>
     </Container>

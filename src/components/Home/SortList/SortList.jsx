@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import { Avatar, Checkbox} from "@mui/material";
+import { Avatar, Checkbox } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { PersonContext,NewPersonContext } from "../..";
+import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
 
 const SortList = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(PersonContext);
-  const {setNewPerson } = useContext(NewPersonContext);
+  const { setNewPerson } = useContext(NewPersonContext);
   const handleDelete = (ID) => {
     dispatch({ type: "Delete", payload: { ID } });
   };
@@ -40,17 +40,17 @@ const SortList = ({ sortDataByFirstName }) => {
           </Col>
           <Col xs={4}>
             <Link to={`/profile/${item.id}`}>
-              <h6 style={{color:theme.color}}>{item.firstName}</h6>
+              <h6 style={{ color: theme.color }}>{item.firstName}</h6>
             </Link>
           </Col>
           <Col>
             <ClearIcon
-              style={{ color:theme.deleteIcon}}
+              style={{ color: theme.deleteIcon }}
               onClick={() => handleDelete(item.id)}
             />
           </Col>
           <Col>
-            <Link to={`/edit/${item.id}`} >
+            <Link to={`/edit/${item.id}`}>
               <ModeEditIcon
                 style={{ color: theme.iconColor }}
                 onClick={() => {

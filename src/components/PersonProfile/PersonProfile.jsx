@@ -1,27 +1,32 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { Checkbox } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import CallIcon from "@mui/icons-material/Call";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import StarIcon from '@mui/icons-material/Star';
-import {PersonContext} from ".."
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { PersonContext } from "..";
 import { ThemeContext } from "../Context/ThemeContext";
 
 const PersonProfile = () => {
-  const{theme}=useContext(ThemeContext)
-
-  const{person}=useContext(PersonContext)
+  const { theme } = useContext(ThemeContext);
+  const { person,dispatch } = useContext(PersonContext);
   const { ID } = useParams();
+  const handleFavorite = (ID, e) => {
+    e.preventDefault();
+    dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
+  };
   return (
-    <Container  style={{ backgroundColor: theme.backGround}}>
+    <Container style={{ backgroundColor: theme.backGround }}>
       <Row>
         <Link to="/">
-        <ArrowBackIosNewIcon
+          <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: "#E6E6E6" }}
+            style={{ color: theme.iconColor }}
           />
         </Link>
       </Row>
@@ -36,40 +41,53 @@ const PersonProfile = () => {
                 </Col>
               </Row>
               <Row className="mt-2">
-                <Col>
-                  <h6>
-                    {item.firstName}
-                    {" "}
-                    {item.familyName}
+                <Col xs={10}>
+                  <h6 style={{ color: theme.color }}>
+                    {item.firstName} {item.familyName}
                   </h6>
                 </Col>
                 <Col xs={2}>
-                  <StarIcon
-                    color={item.favorite === true ? "warning" : "disabled"}
+                  <Checkbox
+                    onChange={(e) => handleFavorite(item.id, e)}
+                    checked={item.favorite}
+                    icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                    checkedIcon={
+                      <StarIcon style={{ color: theme.favoriteColor }} />
+                    }
                   />
                 </Col>
               </Row>
               <Row className="mt-2">
-                <h6>{item.number}</h6>
+                <h6 style={{ color: theme.color }}>
+                  Phone Number: {item.number}
+                </h6>
               </Row>
               <Row className="mt-2">
-                <h6>{item.category}</h6>
+                <h6 style={{ color: theme.color }}>
+                  {" "}
+                  category Group: {item.category}
+                </h6>
               </Row>
               <Row className="mt-2">
-                <h6>{item.email}</h6>
+                <h6 style={{ color: theme.color }}>
+                  Email Adress: {item.email}
+                </h6>
               </Row>
               <Row className="mt-3">
                 <Col>
-                  <CallIcon color="success"  fontSize="large" />
+                  <CallIcon color="success" fontSize="large" />
                 </Col>
                 <Col>
-                  <ChatBubbleOutlineIcon color="action"  fontSize="large" />
+                  <ChatBubbleOutlineIcon
+                    style={{ color: theme.iconColor }}
+                    fontSize="large"
+                  />
                 </Col>
                 <Col>
-                  <WhatsAppIcon color="success"  fontSize="large" />
+                  <WhatsAppIcon color="success" fontSize="large" />
                 </Col>
                 <Col>
-                  <LinkedInIcon color="primary"  fontSize="large" />
+                  <LinkedInIcon color="primary" fontSize="large" />
                 </Col>
               </Row>
             </>
