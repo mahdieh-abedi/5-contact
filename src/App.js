@@ -6,7 +6,6 @@ import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import MarkunreadOutlinedIcon from "@mui/icons-material/MarkunreadOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ThemeContextProvider from "./components/Context/ThemeContext";
-import AlertContextProvider from "./components/Context/AlertContect";
 import {
   Header,
   Home,
@@ -62,7 +61,6 @@ function App() {
   ];
   return (
     <ThemeContextProvider>
-      <AlertContextProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Header />}>
@@ -96,7 +94,6 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-      </AlertContextProvider>
     </ThemeContextProvider>
   );
 }

@@ -1,16 +1,13 @@
 import "../Create&Edit.css";
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import Alert from "@mui/material/Alert";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { AlertContext } from "../../Context/AlertContect";
 
 const Edit = ({ InputAtribute }) => {
-  const { alert, setAlert } = useContext(AlertContext);
   const { theme } = useContext(ThemeContext);
   const { person, dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
@@ -24,8 +21,15 @@ const Edit = ({ InputAtribute }) => {
         newPerson,
       },
     });
-    alert === "none" ? setAlert("block") : setAlert("none");
+    setNewPerson({
+      firstName: "",
+      familyName: "",
+      number: "",
+      email: "",
+      category: "",
+    });
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewPerson({ ...newPerson, [name]: value });
@@ -80,12 +84,6 @@ const Edit = ({ InputAtribute }) => {
                       sx={{ fontSize: 40 }}
                     />
                   </Button>
-                  <Alert
-                    severity="success"
-                    style={{ display: alert, width: 200 }}
-                  >
-                    Contact Edited
-                  </Alert>
                 </div>
               </form>
             </Row>

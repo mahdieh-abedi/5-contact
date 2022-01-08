@@ -4,13 +4,10 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import Alert from "@mui/material/Alert";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-import {AlertContext} from "../../Context/AlertContect";
 
 const Create = ({ InputAtribute }) => {
-  const {alert, setAlert} = useContext(AlertContext);
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
@@ -31,7 +28,6 @@ const Create = ({ InputAtribute }) => {
       email: "",
       category: "",
     });
-    alert === "none" ? setAlert("block") : setAlert("none")
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,12 +83,6 @@ const Create = ({ InputAtribute }) => {
                 sx={{ fontSize: 40 }}
               />
             </Button>
-            <Alert
-              severity="success"
-              style={{ display: alert ,width:200}}
-            >
-              Contact Added{" "}
-            </Alert>
           </div>
         </form>
       </Row>
