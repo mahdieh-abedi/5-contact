@@ -1,23 +1,18 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
-import {Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col } from "react-bootstrap";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { ThemeContext } from "../Context/ThemeContext";
+import { HeaderStyle, HeaderContainerStyle, ButtonStyle } from "../myStyles";
 const Header = () => {
-  const{theme}=useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   return (
-    <div  style={{ backgroundColor: theme.backGround ,color:theme.color}} >
-      <Row
-        position="sticky"
-        style={{ backgroundColor: theme.headerBachGround, borderRadius: 5 }}
-      >
+    <div style={HeaderStyle(theme)}>
+      <Row position="sticky" style={HeaderContainerStyle(theme)}>
         <Col>
           <Link to="/setting">
-            <MenuIcon
-              style={{ color:theme.buttonColor }}
-              fontSize="large"
-            />
+            <MenuIcon style={ButtonStyle(theme)} fontSize="large" />
           </Link>
         </Col>
         <Col xs={7}>
@@ -27,12 +22,12 @@ const Header = () => {
         </Col>
         <Col>
           <Link to="/create">
-            <AddBoxIcon  style={{ color:theme.buttonColor }} fontSize="large" />
+            <AddBoxIcon style={ButtonStyle(theme)} fontSize="large" />
           </Link>
         </Col>
       </Row>
       <Outlet />
-      </div>
+    </div>
   );
 };
 export default Header;

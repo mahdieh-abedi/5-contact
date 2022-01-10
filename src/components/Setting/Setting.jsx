@@ -11,7 +11,13 @@ import { ThemeContext } from "../Context/ThemeContext";
 import Themes from "../Context/Themes";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-
+import {
+  IconStyle,
+  FontStyle,
+  ModeIconsStyle,
+  DividerStyle,
+  SettingPageStyle,
+} from "../myStyles";
 const Setting = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { person } = useContext(PersonContext);
@@ -20,90 +26,62 @@ const Setting = () => {
     e.target.checked ? setTheme(Themes.dark) : setTheme(Themes.light);
   };
   return (
-    <Container
-      style={{
-        width: 300,
-        height: 600,
-        backgroundColor: theme.backGround,
-        color: theme.color,
-      }}
-    >
-      <Row  className="mt-3" >
+    <Container style={SettingPageStyle(theme)}>
+      <Row className="mt-3">
         <Col xs={12}>
           <Link to="/">
             <ArrowBackIosNewIcon
               sx={{ fontSize: 25 }}
-              style={{ color: theme.iconColor }}
+              style={IconStyle(theme)}
             />
           </Link>
         </Col>
       </Row>
-      <Row  className="mt-3">
-        <Col xs={6} style={{ color: theme.color, fontWeight:500}}>
-            Change Mode:
+      <Row className="mt-3">
+        <Col xs={6} style={FontStyle(theme)}>
+          Change Mode:
         </Col>
         <Col xs={6}>
-          <LightModeIcon sx={{ fontSize: 20 }} style={{ color: theme.color }} />
+          <LightModeIcon style={ModeIconsStyle(theme)} />
           <Switch
             checked={theme.status}
             color="default"
             onChange={(e) => handleChangeTheme(e)}
           />
-          <DarkModeIcon sx={{ fontSize: 20 }} style={{ color: theme.color }} />
+          <DarkModeIcon style={ModeIconsStyle(theme)} />
         </Col>
       </Row>
-      <div className="mt-5"
-        style={{
-          padding: 10,
-          fontSize: 14,
-          fontWeight: 900,
-          backgroundColor: theme.dividerBackground,
-          borderRadius: 10,
-        }}
-      >
+      <div className="mt-5" style={DividerStyle(theme)}>
         Setting
       </div>
       <Row>
         <Col xs={6}>
-          <h6 style={{ color: theme.color }}>{person.length} Contacts</h6>
+          <h6 style={FontStyle(theme)}>{person.length} Contacts</h6>
         </Col>
       </Row>
-      <div
-        style={{
-          padding: 10,
-          fontSize: 14,
-          fontWeight: 900,
-          backgroundColor: theme.dividerBackground,
-          borderRadius: 10,
-        }}
-      >
-        Categories
-      </div>
+      <div style={DividerStyle(theme)}>Categories</div>
       <Link to="/family">
-        <Row  className="mt-3">
+        <Row className="mt-3">
           <Col xs={2}>
-            <FamilyRestroomIcon
-              style={{ color: theme.iconColor }}
-              fontSize="large"
-            />
+            <FamilyRestroomIcon style={IconStyle(theme)} fontSize="large" />
           </Col>
-          <Col style={{ color: theme.color }}>Family</Col>
+          <Col style={FontStyle(theme)}>Family</Col>
         </Row>
       </Link>
       <Link to="/friend">
-        <Row  className="mt-3">
+        <Row className="mt-3">
           <Col xs={2}>
-            <GroupIcon style={{ color: theme.iconColor }} fontSize="large" />
+            <GroupIcon style={IconStyle(theme)} fontSize="large" />
           </Col>
-          <Col style={{ color: theme.color }}>Friend</Col>
+          <Col style={FontStyle(theme)}>Friend</Col>
         </Row>
       </Link>
       <Link to="/work">
-        <Row  className="mt-3">
+        <Row className="mt-3">
           <Col xs={2}>
-            <WorkIcon style={{ color: theme.iconColor }} fontSize="large" />
+            <WorkIcon style={IconStyle(theme)} fontSize="large" />
           </Col>
-          <Col style={{ color: theme.color }}>Work</Col>
+          <Col style={FontStyle(theme)}>Work</Col>
         </Row>
       </Link>
     </Container>

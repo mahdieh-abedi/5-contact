@@ -9,10 +9,10 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import {PersonContext,NewPersonContext} from "../.."
 import { ThemeContext } from "../../Context/ThemeContext";
+import { FontStyle,IconStyle,DeleteButtonStyle,FavoriteIconStyle} from "../../myStyles";
 
 const FavoriteList = ({sortDataByFirstName}) => {
   const { theme } = useContext(ThemeContext);
-
   const { dispatch } = useContext(PersonContext);
   const { setNewPerson } = useContext(NewPersonContext);
 
@@ -36,8 +36,8 @@ const FavoriteList = ({sortDataByFirstName}) => {
                 <Checkbox
                   onChange={(e) => handleFavorite(item.id, e)}
                   checked={item.favorite}
-                  icon={<StarBorderIcon style={{color: theme.iconColor }} />}
-                  checkedIcon={<StarIcon style={{ color: theme.favoriteColor }} />}
+                  icon={<StarBorderIcon style={IconStyle(theme)} />}
+                  checkedIcon={<StarIcon style={FavoriteIconStyle(theme)} />}
                 />{" "}
               </Col>
               <Col xs={2}>
@@ -47,19 +47,19 @@ const FavoriteList = ({sortDataByFirstName}) => {
               </Col>
               <Col xs={4}>
                 <Link to={`/profile/${item.id}`}>
-                  <h6 style={{color:theme.color}}>{item.firstName}</h6>
+                  <h6 style={FontStyle(theme)}>{item.firstName}</h6>
                 </Link>
               </Col>
               <Col>
                 <ClearIcon
-                  style={{ color:theme.deleteIcon}}
+                  style={DeleteButtonStyle(theme)}
                   onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
               <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
-                    style={{ color: theme.iconColor }}
+                    style={IconStyle(theme)}
                     onClick={() => {
                       setNewPerson(item);
                     }}

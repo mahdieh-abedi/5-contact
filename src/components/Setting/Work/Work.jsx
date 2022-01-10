@@ -10,10 +10,18 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
+import {
+  IconStyle,
+  ContainerStyle,
+  DividerStyle,
+  FontStyle,
+  FavoriteIconStyle,
+  DeleteButtonStyle,
+} from "../../myStyles";
 
 const Work = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);
-  const {dispatch } = useContext(PersonContext);
+  const { dispatch } = useContext(PersonContext);
   const { setNewPerson } = useContext(NewPersonContext);
   const handleDelete = (ID) => {
     dispatch({ type: "Delete", payload: { ID } });
@@ -23,29 +31,16 @@ const Work = ({ sortDataByFirstName }) => {
     dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
   return (
-    <Container style={{ backgroundColor: theme.backGround }}>
+    <Container style={ContainerStyle(theme)}>
       <Row>
         <Link to="/setting">
-          <ArrowBackIosNewIcon
-            sx={{ fontSize: 25 }}
-            style={{ color: theme.iconColor }}
-          />
+          <ArrowBackIosNewIcon sx={{ fontSize: 25 }} style={IconStyle(theme)} />
         </Link>
       </Row>
-      <div
-        style={{
-          padding: 10,
-          fontSize: 14,
-          fontWeight: 900,
-          backgroundColor: theme.dividerBackground,
-          borderRadius: 10,
-        }}
-      >
-        Work list
-      </div>
+      <div style={DividerStyle(theme)}>Work list</div>
       {sortDataByFirstName.filter((item) => item.category === "Work").length ===
       0 ? (
-        <h6 style={{ color: theme.color }}>
+        <h6 style={FontStyle(theme)}>
           there is no work category in your contacts
         </h6>
       ) : (
@@ -54,12 +49,12 @@ const Work = ({ sortDataByFirstName }) => {
           .map((item) => (
             <Row key={item.id} className="mt-3">
               <Col>
-              <Checkbox
+                <Checkbox
                   onChange={(e) => handleFavorite(item.id, e)}
                   checked={item.favorite}
-                  icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                  icon={<StarBorderIcon style={IconStyle(theme)} />}
                   checkedIcon={
-                    <StarIcon style={{ color: theme.favoriteColor }} />
+                    <StarIcon style={FavoriteIconStyle(theme)} />
                   }
                 />
               </Col>
@@ -70,19 +65,19 @@ const Work = ({ sortDataByFirstName }) => {
               </Col>
               <Col xs={4}>
                 <Link to={`/profile/${item.id}`}>
-                  <h6 style={{ color: theme.color }}>{item.firstName}</h6>
+                  <h6 style={FontStyle(theme)}>{item.firstName}</h6>
                 </Link>
               </Col>
               <Col>
                 <ClearIcon
-                  style={{ color: theme.deleteIcon }}
+                    style={DeleteButtonStyle(theme)}
                   onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
                 <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
-                    style={{ color: theme.iconColor }}
+                     style={IconStyle(theme)}
                     onClick={() => {
                       setNewPerson(item);
                     }}

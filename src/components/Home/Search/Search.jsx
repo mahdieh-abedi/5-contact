@@ -10,7 +10,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { ThemeContext } from "../../Context/ThemeContext";
-
+import { IconStyle,ContainerStyle,FontStyle,FavoriteIconStyle,DeleteButtonStyle} from "../../myStyles";
 const Search = () => {
   const{theme}=useContext(ThemeContext)
   const { person, dispatch } = useContext(PersonContext);
@@ -24,12 +24,12 @@ const Search = () => {
     dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
   return (
-    <Container  style={{ backgroundColor: theme.backGround}}>
+    <Container  style={ContainerStyle(theme)}>
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: theme.iconColor }}
+            style={IconStyle(theme)}
           />
         </Link>
       </Row>
@@ -51,7 +51,7 @@ const Search = () => {
           item.email.toLowerCase().includes(filter.toLowerCase()) ||
           item.number.includes(filter)
       ).length === 0 ? (
-        <h6 style={{ color: theme.color }}>o0ops... there is no contact with this name</h6>
+        <h6 style={FontStyle(theme)}>o0ops... there is no contact with this name</h6>
       ) : (
         person
           .filter(
@@ -67,9 +67,9 @@ const Search = () => {
               <Checkbox
                   onChange={(e) => handleFavorite(item.id, e)}
                   checked={item.favorite}
-                  icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                  icon={<StarBorderIcon style={IconStyle(theme)} />}
                   checkedIcon={
-                    <StarIcon style={{ color: theme.favoriteColor }} />
+                    <StarIcon style={FavoriteIconStyle(theme)} />
                   }
                 />
               </Col>
@@ -80,19 +80,19 @@ const Search = () => {
               </Col>
               <Col xs={4}>
                 <Link to={`/profile/${item.id}`}>
-                  <h6 style={{ color: theme.color }}>{item.firstName}</h6>
+                  <h6 style={FontStyle(theme)}>{item.firstName}</h6>
                 </Link>
               </Col>
               <Col xs={2}>
                 <ClearIcon
-                  style={{ color: theme.deleteIcon }}
+                  style={DeleteButtonStyle(theme)}
                   onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
               <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
-                    style={{ color: theme.iconColor }}
+                    style={IconStyle(theme)}
                     onClick={() => {
                       setNewPerson(item);
                     }}

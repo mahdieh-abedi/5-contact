@@ -11,7 +11,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { PersonContext } from "..";
 import { ThemeContext } from "../Context/ThemeContext";
-
+import { IconStyle,ContainerStyle,FontStyle,FavoriteIconStyle} from "../myStyles";
 const PersonProfile = () => {
   const { theme } = useContext(ThemeContext);
   const { person,dispatch } = useContext(PersonContext);
@@ -21,12 +21,12 @@ const PersonProfile = () => {
     dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
   return (
-    <Container style={{ backgroundColor: theme.backGround }}>
+    <Container style={ContainerStyle(theme)}>
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: theme.iconColor }}
+            style={IconStyle(theme)}
           />
         </Link>
       </Row>
@@ -42,7 +42,7 @@ const PersonProfile = () => {
               </Row>
               <Row className="mt-2">
                 <Col xs={10}>
-                  <h6 style={{ color: theme.color }}>
+                  <h6 style={FontStyle(theme)}>
                     {item.firstName} {item.familyName}
                   </h6>
                 </Col>
@@ -50,26 +50,26 @@ const PersonProfile = () => {
                   <Checkbox
                     onChange={(e) => handleFavorite(item.id, e)}
                     checked={item.favorite}
-                    icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                    icon={<StarBorderIcon style={IconStyle(theme)} />}
                     checkedIcon={
-                      <StarIcon style={{ color: theme.favoriteColor }} />
+                      <StarIcon style={FavoriteIconStyle(theme)} />
                     }
                   />
                 </Col>
               </Row>
               <Row className="mt-2">
-                <h6 style={{ color: theme.color }}>
+                <h6 style={FontStyle(theme)}>
                   Phone Number: {item.number}
                 </h6>
               </Row>
               <Row className="mt-2">
-                <h6 style={{ color: theme.color }}>
+                <h6 style={FontStyle(theme)}>
                   {" "}
                   category Group: {item.category}
                 </h6>
               </Row>
               <Row className="mt-2">
-                <h6 style={{ color: theme.color }}>
+                <h6 style={FontStyle(theme)}>
                   Email Adress: {item.email}
                 </h6>
               </Row>
@@ -79,7 +79,7 @@ const PersonProfile = () => {
                 </Col>
                 <Col>
                   <ChatBubbleOutlineIcon
-                    style={{ color: theme.iconColor }}
+                    style={IconStyle(theme)}
                     fontSize="large"
                   />
                 </Col>

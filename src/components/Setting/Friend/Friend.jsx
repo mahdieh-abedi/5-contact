@@ -10,6 +10,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
+import { IconStyle,ContainerStyle,DividerStyle,FontStyle,FavoriteIconStyle,DeleteButtonStyle} from "../../myStyles";
 
 const Friend = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);
@@ -23,29 +24,23 @@ const Friend = ({ sortDataByFirstName }) => {
     dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
   return (
-    <Container style={{ backgroundColor: theme.backGround }}>
+    <Container style={ContainerStyle(theme)}>
       <Row>
         <Link to="/setting">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: theme.iconColor }}
+            style={IconStyle(theme)}
           />
         </Link>
       </Row>
       <div
-        style={{
-          padding: 10,
-          fontSize: 14,
-          fontWeight: 900,
-          backgroundColor: theme.dividerBackground,
-          borderRadius: 10,
-        }}
+style={DividerStyle(theme)}
       >
         Friend list
       </div>
       {sortDataByFirstName.filter((item) => item.category === "Friend")
         .length === 0 ? (
-        <h6>there is no friend category in your contacts</h6>
+        <h6 style={FontStyle(theme)}>there is no friend category in your contacts</h6>
       ) : (
         sortDataByFirstName
           .filter((item) => item.category === "Friend")
@@ -55,9 +50,9 @@ const Friend = ({ sortDataByFirstName }) => {
                 <Checkbox
                   onChange={(e) => handleFavorite(item.id, e)}
                   checked={item.favorite}
-                  icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                  icon={<StarBorderIcon style={IconStyle(theme)} />}
                   checkedIcon={
-                    <StarIcon style={{ color: theme.favoriteColor }} />
+                    <StarIcon style={FavoriteIconStyle(theme)} />
                   }
                 />
               </Col>
@@ -68,19 +63,19 @@ const Friend = ({ sortDataByFirstName }) => {
               </Col>
               <Col xs={4}>
                 <Link to={`/profile/${item.id}`}>
-                  <h6 style={{ color: theme.color }}>{item.firstName}</h6>
+                  <h6 style={FontStyle(theme)}>{item.firstName}</h6>
                 </Link>
               </Col>
               <Col>
                 <ClearIcon
-                  style={{ color: theme.deleteIcon }}
+                   style={DeleteButtonStyle(theme)}
                   onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
                 <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
-                    style={{ color: theme.iconColor }}
+                    style={IconStyle(theme)}
                     onClick={() => {
                       setNewPerson(item);
                     }}

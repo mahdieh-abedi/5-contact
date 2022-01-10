@@ -6,7 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-
+import {ContainerStyle,IconStyle,ButtonStyle} from "../../myStyles"
 const Create = ({ InputAtribute }) => {
   const navigate=useNavigate()
   const { theme } = useContext(ThemeContext);
@@ -36,12 +36,12 @@ const Create = ({ InputAtribute }) => {
     setNewPerson({ ...newPerson, [name]: value });
   };
   return (
-    <Container style={{ backgroundColor: theme.backGround }}>
+    <Container style={ContainerStyle(theme)}>
       <Row>
         <Link to="/">
           <ArrowBackIosNewIcon
             sx={{ fontSize: 25 }}
-            style={{ color: theme.iconColor }}
+            style={IconStyle(theme)}
           />{" "}
         </Link>
       </Row>
@@ -61,7 +61,7 @@ const Create = ({ InputAtribute }) => {
               <label
                 htmlFor={item.name}
                 className="m-2"
-                style={{ color: theme.iconColor }}
+                style={IconStyle(theme)}
               >
                 {item.icon}
               </label>
@@ -81,7 +81,7 @@ const Create = ({ InputAtribute }) => {
           <div className="buttonBox">
             <Button type="submit" className="SubmitBtn">
               <AddBoxIcon
-                style={{ color: theme.buttonColor }}
+                style={ButtonStyle(theme)}
                 sx={{ fontSize: 40 }}
               />
             </Button>

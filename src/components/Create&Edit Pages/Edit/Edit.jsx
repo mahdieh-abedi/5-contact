@@ -1,14 +1,15 @@
 import "../Create&Edit.css";
-import { useContext} from "react";
-import { Link, useParams,useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
+import { ContainerStyle, IconStyle} from "../../myStyles";
 
 const Edit = ({ InputAtribute }) => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const { person, dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
@@ -22,7 +23,7 @@ const Edit = ({ InputAtribute }) => {
         newPerson,
       },
     });
-    navigate(-1)
+    navigate(-1);
     setNewPerson({
       firstName: "",
       familyName: "",
@@ -37,13 +38,10 @@ const Edit = ({ InputAtribute }) => {
     setNewPerson({ ...newPerson, [name]: value });
   };
   return (
-    <Container style={{ backgroundColor: theme.backGround }}>
+    <Container style={ContainerStyle(theme)}>
       <Row>
         <Link to="/">
-          <ArrowBackIosNewIcon
-            sx={{ fontSize: 25 }}
-            style={{ color: theme.iconColor }}
-          />{" "}
+          <ArrowBackIosNewIcon sx={{ fontSize: 25 }} style={IconStyle(theme)} />
         </Link>
       </Row>
       {person
@@ -62,7 +60,7 @@ const Edit = ({ InputAtribute }) => {
                     <label
                       htmlFor={item.name}
                       className="m-2"
-                      style={{ color: theme.iconColor }}
+                      style={IconStyle(theme)}
                     >
                       {item.icon}
                     </label>
@@ -82,7 +80,7 @@ const Edit = ({ InputAtribute }) => {
                 <div className="buttonBox">
                   <Button type="submit" className="SubmitBtn">
                     <ModeEditIcon
-                      style={{ color: theme.iconColor }}
+                      style={IconStyle(theme)}
                       sx={{ fontSize: 40 }}
                     />
                   </Button>
