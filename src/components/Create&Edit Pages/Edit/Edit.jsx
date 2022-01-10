@@ -1,6 +1,6 @@
 import "../Create&Edit.css";
 import { useContext} from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -8,6 +8,7 @@ import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
 
 const Edit = ({ InputAtribute }) => {
+  const navigate=useNavigate()
   const { theme } = useContext(ThemeContext);
   const { person, dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
@@ -28,6 +29,7 @@ const Edit = ({ InputAtribute }) => {
       email: "",
       category: "",
     });
+    navigate(-1)
   };
 
   const handleChange = (e) => {

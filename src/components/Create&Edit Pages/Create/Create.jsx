@@ -1,6 +1,6 @@
 import "../Create&Edit.css";
-import { useContext} from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
@@ -8,6 +8,7 @@ import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
 
 const Create = ({ InputAtribute }) => {
+  const navigate=useNavigate()
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(PersonContext);
   const { newPerson, setNewPerson } = useContext(NewPersonContext);
@@ -28,6 +29,7 @@ const Create = ({ InputAtribute }) => {
       email: "",
       category: "",
     });
+    navigate(-1)
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
