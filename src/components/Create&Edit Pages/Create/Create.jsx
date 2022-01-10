@@ -22,6 +22,7 @@ const Create = ({ InputAtribute }) => {
         },
       });
     }
+    navigate(-1)
     setNewPerson({
       firstName: "",
       familyName: "",
@@ -29,7 +30,6 @@ const Create = ({ InputAtribute }) => {
       email: "",
       category: "",
     });
-    navigate(-1)
   };
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { PersonContext, NewPersonContext, Filter } from "../..";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Avatar } from "@mui/material";
+import { Avatar, Checkbox } from "@mui/material";
 import stringAvatar from "@mui/styled-engine-sc";
-import StarBorderIcon from "@mui/icons-material/Star";
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -12,11 +13,15 @@ import { ThemeContext } from "../../Context/ThemeContext";
 
 const Search = () => {
   const{theme}=useContext(ThemeContext)
-  const { person, setPerson } = useContext(PersonContext);
+  const { person, dispatch } = useContext(PersonContext);
   const { setNewPerson } = useContext(NewPersonContext);
   const { filter, setFilter } = useContext(Filter);
-  const handleDelet = (id) => {
-    setPerson(person.filter((item) => item.id !== id));
+  const handleDelete = (ID) => {
+    dispatch({ type: "Delete", payload: { ID } });
+  };
+  const handleFavorite = (ID, e) => {
+    e.preventDefault();
+    dispatch({ type: "Favorite", payload: { ID, checked: e.target.checked } });
   };
   return (
     <Container  style={{ backgroundColor: theme.backGround}}>
@@ -59,11 +64,12 @@ const Search = () => {
           .map((item) => (
             <Row key={item.id} className="mt-3">
               <Col xs={2}>
-              <StarBorderIcon
-                  color={
-                    person.favorite === true
-                      ? theme.favoriteColor
-                      : theme.iconColor
+              <Checkbox
+                  onChange={(e) => handleFavorite(item.id, e)}
+                  checked={item.favorite}
+                  icon={<StarBorderIcon style={{ color: theme.iconColor }} />}
+                  checkedIcon={
+                    <StarIcon style={{ color: theme.favoriteColor }} />
                   }
                 />
               </Col>
@@ -80,13 +86,13 @@ const Search = () => {
               <Col xs={2}>
                 <ClearIcon
                   style={{ color: theme.deleteIcon }}
-                  onClick={() => handleDelet(item.id)}
+                  onClick={() => handleDelete(item.id)}
                 />
               </Col>
               <Col>
-                <Link to="/createandupdate">
+              <Link to={`/edit/${item.id}`}>
                   <ModeEditIcon
-                   style={{ color: theme.iconColor }}
+                    style={{ color: theme.iconColor }}
                     onClick={() => {
                       setNewPerson(item);
                     }}
