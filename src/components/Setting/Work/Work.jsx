@@ -17,7 +17,7 @@ import {
   FontStyle,
   FavoriteIconStyle,
   DeleteButtonStyle,
-} from "../../myStyles";
+} from "../../MyStyles/myStyles";
 
 const Work = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);

@@ -9,7 +9,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { FontStyle,IconStyle,DeleteButtonStyle,FavoriteIconStyle} from "../../myStyles";
+import { FontStyle,IconStyle,DeleteButtonStyle,FavoriteIconStyle} from "../../MyStyles/myStyles";
 
 const SortList = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);

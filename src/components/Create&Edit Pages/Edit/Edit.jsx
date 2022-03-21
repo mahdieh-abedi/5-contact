@@ -6,7 +6,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { ContainerStyle, IconStyle} from "../../myStyles";
+import { ContainerStyle, IconStyle} from "../../MyStyles/myStyles";
 
 const Edit = ({ InputAtribute }) => {
   const navigate = useNavigate();

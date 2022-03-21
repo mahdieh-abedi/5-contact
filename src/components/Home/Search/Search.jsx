@@ -10,7 +10,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { IconStyle,ContainerStyle,FontStyle,FavoriteIconStyle,DeleteButtonStyle} from "../../myStyles";
+import { IconStyle,ContainerStyle,FontStyle,FavoriteIconStyle,DeleteButtonStyle} from "../../MyStyles/myStyles";
 const Search = () => {
   const{theme}=useContext(ThemeContext)
   const { person, dispatch } = useContext(PersonContext);

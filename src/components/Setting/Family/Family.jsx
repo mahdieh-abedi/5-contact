@@ -10,7 +10,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { IconStyle,ContainerStyle,DividerStyle,FontStyle,FavoriteIconStyle,DeleteButtonStyle} from "../../myStyles";
+import { IconStyle,ContainerStyle,DividerStyle,FontStyle,FavoriteIconStyle,DeleteButtonStyle} from "../../MyStyles/myStyles";
 const Family = ({ sortDataByFirstName }) => {
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(PersonContext);

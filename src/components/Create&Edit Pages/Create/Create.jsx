@@ -6,7 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { PersonContext, NewPersonContext } from "../..";
 import { ThemeContext } from "../../Context/ThemeContext";
-import {ContainerStyle,IconStyle,ButtonStyle} from "../../myStyles"
+import {ContainerStyle,IconStyle,ButtonStyle} from "../../MyStyles/myStyles"
 const Create = ({ InputAtribute }) => {
   const navigate=useNavigate()
   const { theme } = useContext(ThemeContext);

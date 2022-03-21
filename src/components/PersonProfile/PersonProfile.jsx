@@ -11,7 +11,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { PersonContext } from "..";
 import { ThemeContext } from "../Context/ThemeContext";
-import { IconStyle,ContainerStyle,FontStyle,FavoriteIconStyle} from "../myStyles";
+import { IconStyle,ContainerStyle,FontStyle,FavoriteIconStyle} from "../MyStyles/myStyles";
 const PersonProfile = () => {
   const { theme } = useContext(ThemeContext);
   const { person,dispatch } = useContext(PersonContext);

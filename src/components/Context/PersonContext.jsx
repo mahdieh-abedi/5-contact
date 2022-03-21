@@ -1,6 +1,6 @@
 import { useReducer, useEffect, createContext } from "react";
-import { Data, Reducer } from "..";
-
+import Data from "../Data/Data"
+import Reducer from "../Reducer/Reducer"
 export const PersonContext = createContext({ person: [], dispatch: () => {} });
 
 const PersonContextProvider = ({ children }) => {

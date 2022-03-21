@@ -17,7 +17,7 @@ import {
   ModeIconsStyle,
   DividerStyle,
   SettingPageStyle,
-} from "../myStyles";
+} from "../MyStyles/myStyles";
 const Setting = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { person } = useContext(PersonContext);
